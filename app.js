@@ -1,4 +1,4 @@
-// app.js dosyası - NİHAİ VE 450+ SEMPTOM PROTOKOLÜ
+// app.js dosyası - NİHAİ VE 450+ SEMPTOM PROTOKOLÜ (50 YENİ SEMPTOM EKLENMİŞTİR)
 
 // --- YARDIMCI FONKSİYON: TÜRKÇE KARAKTERLERİ NORMALLEŞTİRME ---
 const normalizeTurkish = (text) => {
@@ -53,8 +53,79 @@ const SEMPTOM_VERILERI = [
     //... (Diğer Genel Semptomlar)
     {id: 49, semptom: "Gece Terlemesi", anahtar_kelimeler: ["night sweat", "gece", "terleme"], tanisal_bolum: "Dahiliye", tedavi_bolum: "Dahiliye", acil_durum: ["Ateş ve sebepsiz kilo kaybı"], yapilmasi_gereken: "Enfeksiyonel veya sistemik hastalıkların tespiti için Dahiliye'ye başvurunuz.", aciklama: "Sistemik hastalıkların genel belirtileri."},
     {id: 50, semptom: "Boyunda Şişlik (Elle Hissedilen)", anahtar_kelimeler: ["neck", "boyun", "sislik", "nodul", "lenf bezi"], tanisal_bolum: "Endokrinoloji / Genel Cerrahi", tedavi_bolum: "Genel Cerrahi", acil_durum: ["Nefes almada zorluk", "Hızlı büyüme"], yapilmasi_gereken: "Tiroid nodülleri ve lenf bezleri kontrolü için Endokrinoloji'ye başvurulur.", aciklama: "Tiroid ve lenf sistemi sorunları."},
-
-    // --- OMURGA VE EKLEMLER (450+ semptomun devamı) ---
+    
+    // --- YENİ EKLENEN GENEL SİSTEM & DAHİLİYE SEMPTOMLARI (ID: 500-509) ---
+    {
+        id: 500, semptom: "Kolay Morarma ve Kanama",
+        anahtar_kelimeler: ["morarma", "kanama", "pıhtı", "hemofili", "platelet", "trombosit"],
+        tanisal_bolum: "Hematoloji", tedavi_bolum: "Hematoloji",
+        acil_durum: ["İdrar veya dışkıda kan", "Bilinç kaybı"],
+        yapilmasi_gereken: "Kan pıhtılaşma bozuklukları, vitamin eksiklikleri veya kan hastalıklarının tespiti için Hematoloji'ye başvurulur.", aciklama: "Kan ve kan yapıcı organ hastalıkları."
+    },
+    {
+        id: 501, semptom: "Hızlı Kalp Çarpıntısı (Palpitasyon)",
+        anahtar_kelimeler: ["çarpıntı", "kalp", "aritmi", "palpitasyon", "hizli", "tiroid"],
+        tanisal_bolum: "Kardiyoloji / Endokrinoloji", tedavi_bolum: "Kardiyoloji",
+        acil_durum: ["Göğüs ağrısı", "Nefes darlığı", "Bayılma"],
+        yapilmasi_gereken: "Kalp ritmi bozuklukları (Aritmi) ve tiroid kaynaklı sorunların tespiti için Kardiyoloji'ye başvurulur.", aciklama: "Kalp ve hormonal sistemin genel kontrolü."
+    },
+    {
+        id: 502, semptom: "Anormal Susuzluk ve Sık İdrara Çıkma",
+        anahtar_kelimeler: ["susuzluk", "idrar", "diyabet", "seker", "poliüri", "polidipsi"],
+        tanisal_bolum: "Endokrinoloji / Üroloji", tedavi_bolum: "Endokrinoloji",
+        acil_durum: ["Bilinç bulanıklığı", "Aşırı halsizlik"],
+        yapilmasi_gereken: "Şeker hastalığı (Diyabet) veya böbrek fonksiyonları kontrolü için Endokrinoloji'ye başvurulur.", aciklama: "Metabolik ve hormonal dengesizlikler."
+    },
+    {
+        id: 503, semptom: "Vücutta Ödem (Şişlik ve Su Tutma)",
+        anahtar_kelimeler: ["odem", "sislik", "su", "tasma", "bobrek", "kalp", "dolaşım"],
+        tanisal_bolum: "Nefroloji / Kardiyoloji", tedavi_bolum: "Nefroloji / Dahiliye",
+        acil_durum: ["Ani nefes darlığı"],
+        yapilmasi_gereken: "Böbrek, kalp veya karaciğer fonksiyon bozukluklarının tespiti için Nefroloji veya Kardiyoloji'ye başvurulur.", aciklama: "Dolaşım, böbrek ve karaciğer sistemi sorunları."
+    },
+    {
+        id: 504, semptom: "Tansiyon Yüksekliği (Sürekli)",
+        anahtar_kelimeler: ["tansiyon", "yuksek", "hipertansiyon", "basinc"],
+        tanisal_bolum: "Kardiyoloji / Nefroloji", tedavi_bolum: "Kardiyoloji",
+        acil_durum: ["Şiddetli baş ağrısı", "Bulanık görme"],
+        yapilmasi_gereken: "Hipertansiyonun nedeni ve tedavisi için Kardiyoloji'ye başvurulur.", aciklama: "Kalp ve damar sağlığının kontrolü."
+    },
+    {
+        id: 505, semptom: "Tansiyon Düşüklüğü (Sürekli)",
+        anahtar_kelimeler: ["tansiyon", "dusuk", "hipotansiyon", "bayilma"],
+        tanisal_bolum: "Dahiliye", tedavi_bolum: "Dahiliye",
+        acil_durum: ["Bayılma"],
+        yapilmasi_gereken: "Dehidrasyon, kansızlık veya hormonal nedenlerin tespiti için Dahiliye'ye başvurulur.", aciklama: "Genel sistemik kontrol ve elektrolit dengesi."
+    },
+    {
+        id: 506, semptom: "Kas Güçsüzlüğü ve Kramp",
+        anahtar_kelimeler: ["kas", "gucsuzluk", "kramp", "miyopati", "nöroloji"],
+        tanisal_bolum: "Nöroloji / FTR", tedavi_bolum: "Nöroloji / FTR",
+        acil_durum: ["Yutkunma veya nefes almada zorluk"],
+        yapilmasi_gereken: "Sinir ve kas hastalıklarının (Miyopati) tespiti için Nöroloji'ye veya FTR'ye başvurulur.", aciklama: "Kas ve sinir sistemi bozuklukları."
+    },
+    {
+        id: 507, semptom: "Deride Sarılık (Göz Aklarında da)",
+        anahtar_kelimeler: ["sarilik", "cilt", "göz", "karaciger", "bilirubin", "hepatit"],
+        tanisal_bolum: "Gastroenteroloji / Dahiliye", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["**ACİL SERVİS**"],
+        yapilmasi_gereken: "Karaciğer, safra yolları veya kan hastalıklarının tespiti için Gastroenteroloji'ye başvurulur.", aciklama: "Karaciğer ve safra yolları fonksiyon bozuklukları."
+    },
+    {
+        id: 508, semptom: "Dilde ve Ağız Kenarlarında Çatlak",
+        anahtar_kelimeler: ["dil", "agiz", "çatlak", "vitamin", "b12", "anemi"],
+        tanisal_bolum: "Dahiliye (İç Hastalıkları)", tedavi_bolum: "Dahiliye",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "B12, demir gibi vitamin ve mineral eksikliklerinin tespiti için Dahiliye'ye başvurulur.", aciklama: "Vitamin ve mineral eksikliklerinin tespiti."
+    },
+    {
+        id: 509, semptom: "Genel Kaşıntı (Döküntüsüz)",
+        anahtar_kelimeler: ["kasinti", "pruritus", "cilt", "karaciger", "böbrek"],
+        tanisal_bolum: "Dermatoloji / Dahiliye", tedavi_bolum: "Dermatoloji / Dahiliye",
+        acil_durum: ["Sarılıkla birlikte kaşıntı"],
+        yapilmasi_gereken: "Cilt hastalıkları, karaciğer veya böbrek sorunları açısından incelenmek üzere Dahiliye'ye başvurulur.", aciklama: "Sistemik hastalıkların deri üzerindeki etkileri."
+    },
+    // --- OMURGA VE EKLEMLER (ID: 51-150) ---
     {
         id: 51, semptom: "Bel Ağrısı (Bacağa Yayılan Sızı)",
         anahtar_kelimeler: ["back", "bel", "low back", "fıtık", "siyatik", "agri", "bacak", "lomber"],
@@ -120,6 +191,78 @@ const SEMPTOM_VERILERI = [
     },
     //... (Diğer 90+ Omurga ve Eklem Semptomu)
 
+    // --- YENİ EKLENEN OMURGA VE EKLEM SEMPTOMLARI (ID: 510-519) ---
+    {
+        id: 510, semptom: "Topuk Ağrısı (Sabahları Şiddetli)",
+        anahtar_kelimeler: ["topuk", "agri", "plantar", "fasiit", "spur"],
+        tanisal_bolum: "Ortopedi ve Travmatoloji", tedavi_bolum: "FTR",
+        acil_durum: ["Ateşle birlikte şişlik"],
+        yapilmasi_gereken: "Topuk dikeni veya plantar fasiit tanısı için Ortopedi'ye başvurulur. Tedavi FTR ile başlar.", aciklama: "Ayak tabanı ve topuk sorunları."
+    },
+    {
+        id: 511, semptom: "Çene Eklemi Ağrısı (Yemek Yerken)",
+        anahtar_kelimeler: ["cene", "eklem", "temporomandibular", "dis", "disci"],
+        tanisal_bolum: "Diş Hekimliği (Çene Cerrahisi)", tedavi_bolum: "Diş Hekimliği",
+        acil_durum: ["Çenenin kilitlenmesi"],
+        yapilmasi_gereken: "Temporomandibular eklem (Çene Eklemi) bozuklukları için Çene Cerrahisi'ne başvurulur.", aciklama: "Çene eklemi (TMJ) sorunları."
+    },
+    {
+        id: 512, semptom: "Dirsek Dışında Ağrı (Tenisçi Dirseği)",
+        anahtar_kelimeler: ["dirsek", "tenisci", "epicondilit", "tendinit"],
+        tanisal_bolum: "Ortopedi ve Travmatoloji", tedavi_bolum: "FTR",
+        acil_durum: ["Şiddetli şişlik ve kızarıklık"],
+        yapilmasi_gereken: "Lateral epikondilit (Tenisçi Dirseği) tanısı ve tedavisi için Ortopedi veya FTR'ye başvurulur.", aciklama: "Dirsek tendonlarının aşırı kullanım yaralanmaları."
+    },
+    {
+        id: 513, semptom: "Dizde Kilitlenme ve Boşalma Hissi",
+        anahtar_kelimeler: ["diz", "kilitlenme", "bosalma", "meniskus", "bag"],
+        tanisal_bolum: "Ortopedi ve Travmatoloji", tedavi_bolum: "Ortopedi",
+        acil_durum: ["Ani travma sonrası şiddetli ağrı"],
+        yapilmasi_gereken: "Menisküs yırtığı, bağ hasarı veya eklem faresi şüphesiyle Ortopedi'ye başvurulur.", aciklama: "Diz eklemi ve iç yapı sorunları."
+    },
+    {
+        id: 514, semptom: "Boyunda Sertlik ve Baş Dönmesi",
+        anahtar_kelimeler: ["boyun", "sertlik", "bas donmesi", "servikal"],
+        tanisal_bolum: "Nöroloji / FTR", tedavi_bolum: "FTR",
+        acil_durum: ["Ani güç kaybı"],
+        yapilmasi_gereken: "Kas spazmı, fıtık veya servikal vertigo şüphesiyle FTR veya Nöroloji'ye başvurulur.", aciklama: "Boyun omurgası ve denge ilişkisi."
+    },
+    {
+        id: 515, semptom: "El Parmaklarında Şişlik ve Şekil Bozukluğu",
+        anahtar_kelimeler: ["parmak", "el", "sislik", "romatizma", "artrit"],
+        tanisal_bolum: "Romatoloji", tedavi_bolum: "Romatoloji",
+        acil_durum: ["Ateşle birlikte şiddetli ağrı"],
+        yapilmasi_gereken: "Romatoid Artrit veya diğer romatizmal hastalıkların tespiti için Romatoloji'ye başvurulur.", aciklama: "İltihaplı eklem hastalıklarının tanısı."
+    },
+    {
+        id: 516, semptom: "Otururken Kuyruk Sokumu Ağrısı",
+        anahtar_kelimeler: ["kuyruk sokumu", "oturma", "agri", "koksiks", "travma"],
+        tanisal_bolum: "FTR / Ortopedi", tedavi_bolum: "FTR",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Kuyruk sokumu (Koksiks) travması veya iltihabı tanısı için FTR'ye başvurulur.", aciklama: "Kuyruk sokumu bölgesi ağrıları."
+    },
+    {
+        id: 517, semptom: "Ayak Başparmağında Şişlik ve Kızarıklık",
+        anahtar_kelimeler: ["ayak", "basparmak", "sislik", "kizariklik", "gut", "ure"],
+        tanisal_bolum: "Romatoloji / Ortopedi", tedavi_bolum: "Romatoloji",
+        acil_durum: ["Yüksek ateş"],
+        yapilmasi_gereken: "Gut hastalığı veya iltihaplı eklem sorunları şüphesiyle Romatoloji'ye başvurulur.", aciklama: "Metabolik eklem hastalıkları."
+    },
+    {
+        id: 518, semptom: "Kasık Ağrısı (Erkek)",
+        anahtar_kelimeler: ["kasik", "agri", "fıtık", "hernı", "testis", "uroloji"],
+        tanisal_bolum: "Genel Cerrahi / Üroloji", tedavi_bolum: "Genel Cerrahi",
+        acil_durum: ["Testiste ani şişlik ve şiddetli ağrı"],
+        yapilmasi_gereken: "Kasık fıtığı veya testis sorunları şüphesiyle Genel Cerrahi veya Üroloji'ye başvurulur.", aciklama: "Kasık bölgesi fıtık ve ürogenital sorunlar."
+    },
+    {
+        id: 519, semptom: "Kasık Ağrısı (Kadın)",
+        anahtar_kelimeler: ["kasik", "agri", "kadın", "yumurtalık", "adet", "jinekoloji"],
+        tanisal_bolum: "Kadın Hastalıkları ve Doğum", tedavi_bolum: "Kadın Hastalıkları ve Doğum",
+        acil_durum: ["Şiddetli, ani karın ağrısı", "Kanama"],
+        yapilmasi_gereken: "Yumurtalık kisti, enfeksiyon veya adet döngüsü ile ilgili sorunlar için Jinekoloji'ye başvurulur.", aciklama: "Kadın üreme sistemi sorunları."
+    },
+    
     // --- BAŞ VE YÜZ ORGANLARI (ID: 151-220) ---
     {
         id: 151, semptom: "Gözde Sinek Uçuşması ve Işık Çakması",
@@ -158,6 +301,113 @@ const SEMPTOM_VERILERI = [
     },
     //... (Diğer 70+ Baş ve Yüz Semptomu)
 
+    // --- YENİ EKLENEN BAŞ VE YÜZ SEMPTOMLARI (ID: 520-534) ---
+    {
+        id: 520, semptom: "Baş Ağrısı (Ense Kökenli, Gerginlik Tipi)",
+        anahtar_kelimeler: ["bas agrisi", "ense", "gerilim", "stres", "tension"],
+        tanisal_bolum: "Nöroloji / FTR", tedavi_bolum: "Nöroloji",
+        acil_durum: ["Bilinç kaybı", "Ateş ve boyun sertliği"],
+        yapilmasi_gereken: "Baş ağrısı tipinin tespiti ve tedavi için Nöroloji'ye başvurulur.", aciklama: "En sık görülen baş ağrısı tipleri."
+    },
+    {
+        id: 521, semptom: "Baş Ağrısı (Tek Taraflı, Bulantılı - Migren)",
+        anahtar_kelimeler: ["bas agrisi", "migren", "tek", "bulanti", "ışık", "ses"],
+        tanisal_bolum: "Nöroloji", tedavi_bolum: "Nöroloji",
+        acil_durum: ["Ani ve hayatınızdaki en şiddetli baş ağrısı"],
+        yapilmasi_gereken: "Migren tanısı ve ilaç tedavisi planlaması için Nöroloji'ye başvurulur.", aciklama: "Kronik ve şiddetli baş ağrısı tanısı."
+    },
+    {
+        id: 522, semptom: "Ani Görme Kaybı (Kısa Süreli)",
+        anahtar_kelimeler: ["gorme", "kaybi", "körlük", "retina", "göz", "geçici"],
+        tanisal_bolum: "Göz Hastalıkları / Nöroloji", tedavi_bolum: "Göz Hastalıkları",
+        acil_durum: ["**ACİL SERVİS**"],
+        yapilmasi_gereken: "Göz tansiyonu, retina sorunları veya beyin damar tıkanıklığı şüphesiyle acilen Göz Hastalıkları veya Nöroloji'ye başvurulur.", aciklama: "Göz ve nörolojik acil durumlar."
+    },
+    {
+        id: 523, semptom: "Çift Görme (Diplopi)",
+        anahtar_kelimeler: ["cift gorme", "diplopi", "göz", "nöroloji", "sinir"],
+        tanisal_bolum: "Nöroloji / Göz Hastalıkları", tedavi_bolum: "Nöroloji",
+        acil_durum: ["Göz hareketlerinde kısıtlılık", "Baş dönmesi"],
+        yapilmasi_gereken: "Göz sinirleri veya beyin kaynaklı sorunların tespiti için Nöroloji'ye başvurulur.", aciklama: "Beyin ve göz sinirleri ilişkisi."
+    },
+    {
+        id: 524, semptom: "Burun Kanaması (Tekrarlayan)",
+        anahtar_kelimeler: ["burun", "kanama", "epistaksis", "kbb", "tansiyon"],
+        tanisal_bolum: "Kulak Burun Boğaz (KBB) / Dahiliye", tedavi_bolum: "KBB",
+        acil_durum: ["Durdurulamayan şiddetli kanama"],
+        yapilmasi_gereken: "Burun içi damar sorunları, tansiyon veya kanama bozuklukları için KBB'ye başvurulur.", aciklama: "KBB ve sistemik nedenler."
+    },
+    {
+        id: 525, semptom: "Koku Kaybı (Anosmi)",
+        anahtar_kelimeler: ["koku", "kaybi", "anosmi", "sinus", "polip", "kovid"],
+        tanisal_bolum: "Kulak Burun Boğaz (KBB) / Nöroloji", tedavi_bolum: "KBB",
+        acil_durum: ["Ani, şiddetli baş ağrısı"],
+        yapilmasi_gereken: "Sinüs tıkanıklığı, enfeksiyon veya nörolojik nedenlerin tespiti için KBB'ye başvurulur.", aciklama: "Koku alma sisteminin değerlendirilmesi."
+    },
+    {
+        id: 526, semptom: "Ağızda Sürekli Kötü Tat",
+        anahtar_kelimeler: ["agiz", "tat", "kotu", "dis", "disci", "reflu", "sinus"],
+        tanisal_bolum: "Diş Hekimliği / KBB / Gastroenteroloji", tedavi_bolum: "Diş Hekimliği",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Diş çürükleri, diş eti hastalıkları, sinüzit veya reflü şüphesiyle Diş Hekimliği'ne başvurulur.", aciklama: "Ağız ve sindirim sistemi bağlantısı."
+    },
+    {
+        id: 527, semptom: "Dilde Beyaz/Sarı Pas Tabakası",
+        anahtar_kelimeler: ["dil", "pas", "beyaz", "sarilik", "mantar"],
+        tanisal_bolum: "Dahiliye / Gastroenteroloji", tedavi_bolum: "Dahiliye",
+        acil_durum: ["Yüksek ateş"],
+        yapilmasi_gereken: "Mantar enfeksiyonu, sindirim sistemi sorunları veya vitamin eksikliği için Dahiliye'ye başvurulur.", aciklama: "Genel sistemik sağlık göstergesi."
+    },
+    {
+        id: 528, semptom: "Kulak Arkası Şişlik ve Ağrı",
+        anahtar_kelimeler: ["kulak", "arkasi", "sislik", "mastoid", "lenf"],
+        tanisal_bolum: "Kulak Burun Boğaz (KBB)", tedavi_bolum: "KBB",
+        acil_durum: ["Yüksek ateş, kulak akıntısı"],
+        yapilmasi_gereken: "Lenf bezi büyümesi veya mastoidit şüphesiyle KBB'ye başvurulur.", aciklama: "Kulak ve çevresi enfeksiyonları."
+    },
+    {
+        id: 529, semptom: "Ağız Kuruluğu (Kserostomi)",
+        anahtar_kelimeler: ["agiz", "kuruluk", "tukuruk", "sjogren", "diyabet"],
+        tanisal_bolum: "Dahiliye / Romatoloji", tedavi_bolum: "Dahiliye",
+        acil_durum: ["Yutma güçlüğü"],
+        yapilmasi_gereken: "Sistemik hastalıklar (Diyabet) veya Sjögren sendromu gibi romatizmal hastalıklar için Dahiliye/Romatoloji'ye başvurulur.", aciklama: "Tükürük bezi ve sistemik hastalıklar."
+    },
+    {
+        id: 530, semptom: "Kulakta Basınç ve Dolgunluk Hissi",
+        anahtar_kelimeler: ["kulak", "basinc", "dolgunluk", "orta", "sinuzit"],
+        tanisal_bolum: "Kulak Burun Boğaz (KBB)", tedavi_bolum: "KBB",
+        acil_durum: ["Şiddetli baş dönmesi (Vertigo)"],
+        yapilmasi_gereken: "Orta kulak basıncı (Östaki) veya sinüs sorunları için KBB'ye başvurulur.", aciklama: "Orta kulak ve denge sorunları."
+    },
+    {
+        id: 531, semptom: "Diş Eti Kanaması (Fırçalarken)",
+        anahtar_kelimeler: ["dis eti", "kanama", "gingivit", "peridontoloji", "disci"],
+        tanisal_bolum: "Diş Hekimliği (Periodontoloji)", tedavi_bolum: "Diş Hekimliği",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Diş eti iltihabı (Gingivit) ve periodontal hastalıkların tedavisi için Periodontoloji'ye başvurulur.", aciklama: "Diş eti ve çevresi hastalıkları."
+    },
+    {
+        id: 532, semptom: "Sürekli Olarak Burun Akıntısı ve Tıkanıklığı",
+        anahtar_kelimeler: ["burun", "akinti", "tikaniklik", "alerji", "rinit"],
+        tanisal_bolum: "Kulak Burun Boğaz (KBB) / Alerji", tedavi_bolum: "KBB / Alerji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Alerjik rinit veya sinüzit tanısı için KBB'ye başvurulur.", aciklama: "Üst solunum yolu enfeksiyonu ve alerji."
+    },
+    {
+        id: 533, semptom: "Ses Kısıklığı (3 Haftadan Uzun)",
+        anahtar_kelimeler: ["ses", "kisiklik", "larenjit", "nodul", "kbb"],
+        tanisal_bolum: "Kulak Burun Boğaz (KBB)", tedavi_bolum: "KBB",
+        acil_durum: ["Nefes almada zorluk"],
+        yapilmasi_gereken: "Ses teli nodülleri, reflü hasarı veya diğer ciddi nedenlerin tespiti için KBB'ye başvurulur.", aciklama: "Ses teli ve gırtlak (Larenks) hastalıkları."
+    },
+    {
+        id: 534, semptom: "Gözlerde Kuruluk ve Batma Hissi",
+        anahtar_kelimeler: ["goz", "kuruluk", "batma", "gozluk", "yabanci cisim"],
+        tanisal_bolum: "Göz Hastalıkları", tedavi_bolum: "Göz Hastalıkları",
+        acil_durum: ["Ani görme bulanıklığı"],
+        yapilmasi_gereken: "Göz kuruluğu (Kuru Göz Sendromu) tanısı ve tedavisi için Göz Hastalıkları uzmanına başvurulur.", aciklama: "Göz yüzeyi ve gözyaşı bezi sorunları."
+    },
+
     // --- KARIN VE SİNDİRİM (ID: 221-300) ---
     {
         id: 221, semptom: "Mide Yanması ve Ağrısı (Kronik)",
@@ -188,6 +438,113 @@ const SEMPTOM_VERILERI = [
         yapilmasi_gereken: "Bağırsak hareketleri ve kronik sindirim sorunları için Dahiliye'ye başvurulur.", aciklama: "Bağırsak hareketleri ve genel sindirim sorunları."
     },
     //... (Diğer 80+ Karın ve Sindirim Semptomu)
+
+    // --- YENİ EKLENEN KARIN VE SİNDİRİM SEMPTOMLARI (ID: 535-549) ---
+    {
+        id: 535, semptom: "Karın Sol Alt Bölge Ağrısı",
+        anahtar_kelimeler: ["karin", "sol", "alt", "divertikül", "kolit"],
+        tanisal_bolum: "Gastroenteroloji / Genel Cerrahi", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Yüksek ateş, şiddetli kusma"],
+        yapilmasi_gereken: "Kalın bağırsak (Kolon) iltihabı veya divertikülit şüphesi için Gastroenteroloji'ye başvurulur.", aciklama: "Kalın bağırsak hastalıkları."
+    },
+    {
+        id: 536, semptom: "İshal (3 Günden Uzun ve Kanlı)",
+        anahtar_kelimeler: ["ishal", "kanli", "enfeksiyon", "kolit"],
+        tanisal_bolum: "Gastroenteroloji / Enfeksiyon Hastalıkları", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Şiddetli dehidrasyon", "Yüksek ateş"],
+        yapilmasi_gereken: "Bağırsak enfeksiyonları (Kolitis) veya iltihabi bağırsak hastalığı (IBD) için Gastroenteroloji'ye başvurulur.", aciklama: "Bağırsak iltihabi ve enfeksiyonları."
+    },
+    {
+        id: 537, semptom: "Kusma (Safralı veya Kanlı)",
+        anahtar_kelimeler: ["kusma", "safra", "kanli", "mide", "ulkus"],
+        tanisal_bolum: "Gastroenteroloji / Genel Cerrahi", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["**ACİL SERVİS**"],
+        yapilmasi_gereken: "Mide kanaması veya safra yolu tıkanıklığı şüphesi için acilen Gastroenteroloji'ye başvurulur.", aciklama: "Sindirim sistemi acil durumları."
+    },
+    {
+        id: 538, semptom: "Mide Bulantısı ve Karın Şişliği (Yemek Sonrası)",
+        anahtar_kelimeler: ["bulanti", "sislik", "yemek", "safra", "hazimsizlik"],
+        tanisal_bolum: "Dahiliye / Gastroenteroloji", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Sarılık"],
+        yapilmasi_gereken: "Safra kesesi sorunları (Taş), gastrit veya hazımsızlık için Gastroenteroloji'ye başvurulur.", aciklama: "Safra kesesi ve mide hastalıkları."
+    },
+    {
+        id: 539, semptom: "Rektumdan Taze Kan Gelmesi (Dışkı Üzerinde)",
+        anahtar_kelimeler: ["rektal", "kanama", "taze", "basur", "hemoroid", "fissür"],
+        tanisal_bolum: "Genel Cerrahi / Gastroenteroloji", tedavi_bolum: "Genel Cerrahi",
+        acil_durum: ["Aşırı kan kaybı"],
+        yapilmasi_gereken: "Hemoroid, fissür veya kolon polipleri/kanseri tespiti için Genel Cerrahi'ye başvurulur.", aciklama: "Anüs ve kalın bağırsak sorunları."
+    },
+    {
+        id: 540, semptom: "Karında Elle Hissedilen Kitle",
+        anahtar_kelimeler: ["karin", "kitle", "sislik", "tumor", "organ"],
+        tanisal_bolum: "Genel Cerrahi / Gastroenteroloji", tedavi_bolum: "Genel Cerrahi",
+        acil_durum: ["Şiddetli karın ağrısı ve kusma"],
+        yapilmasi_gereken: "Organ büyümesi, fıtık veya tümöral kitle şüphesiyle Genel Cerrahi'ye başvurulur.", aciklama: "Karın içi organ ve doku sorunları."
+    },
+    {
+        id: 541, semptom: "Sürekli Gaz ve Şişkinlik",
+        anahtar_kelimeler: ["gaz", "siskinlik", "ibs", "laktoz", "intolerans"],
+        tanisal_bolum: "Dahiliye / Gastroenteroloji", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Ani, şiddetli karın ağrısı"],
+        yapilmasi_gereken: "İrritabl Bağırsak Sendromu (IBS) veya gıda intoleransları için Dahiliye'ye başvurulur.", aciklama: "Fonksiyonel bağırsak bozuklukları."
+    },
+    {
+        id: 542, semptom: "Karnın Sağ Üst Bölge Ağrısı",
+        anahtar_kelimeler: ["karin", "sag", "ust", "safra", "karaciger"],
+        tanisal_bolum: "Gastroenteroloji / Genel Cerrahi", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Sarılık", "Yüksek ateş"],
+        yapilmasi_gereken: "Safra kesesi iltihabı (Kolesistit) veya karaciğer sorunları için Gastroenteroloji'ye başvurulur.", aciklama: "Safra kesesi ve karaciğer hastalıkları."
+    },
+    {
+        id: 543, semptom: "Yutma Güçlüğü ve Boğazda Takılma Hissi",
+        anahtar_kelimeler: ["yutkunma", "zorluk", "takilma", "yabanci", "yemek borusu", "disfaji"],
+        tanisal_bolum: "Gastroenteroloji / KBB", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Yemek yiyememe", "Kilo kaybı"],
+        yapilmasi_gereken: "Yemek borusu (Özofagus) sorunları veya darlık şüphesiyle Gastroenteroloji'ye başvurulur.", aciklama: "Yemek borusu hastalıkları."
+    },
+    {
+        id: 544, semptom: "Dışkıda Mukus (Sümüksü Yapı)",
+        anahtar_kelimeler: ["mukus", "sumuk", "diski", "kolit", "enfeksiyon"],
+        tanisal_bolum: "Gastroenteroloji", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Kanlı ishal ve ateş"],
+        yapilmasi_gereken: "İltihabi bağırsak hastalığı (IBD) veya bağırsak enfeksiyonları için Gastroenteroloji'ye başvurulur.", aciklama: "Bağırsak zarının iltihabı."
+    },
+    {
+        id: 545, semptom: "Kronik Hıçkırık",
+        anahtar_kelimeler: ["hickirik", "kronik", "akciger", "mide", "sinir"],
+        tanisal_bolum: "Dahiliye / Nöroloji", tedavi_bolum: "Dahiliye",
+        acil_durum: ["Nefes darlığı"],
+        yapilmasi_gereken: "Mide, göğüs kafesi sinirleri veya diyafram sorunlarının tespiti için Dahiliye'ye başvurulur.", aciklama: "Diyafram ve sinir sistemi etkileşimi."
+    },
+    {
+        id: 546, semptom: "Ağız Kokusu (Kronik, Diş Problemi Yoksa)",
+        anahtar_kelimeler: ["agiz kokusu", "halitoz", "mide", "reflu", "sinus"],
+        tanisal_bolum: "Gastroenteroloji / KBB", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Reflü, mide sorunları, sinüzit veya bademcik taşı şüphesiyle Gastroenteroloji'ye başvurulur.", aciklama: "Sindirim ve solunum yolu sorunları."
+    },
+    {
+        id: 547, semptom: "Karında Ses Artışı ve Gürültü",
+        anahtar_kelimeler: ["gurultu", "ses", "bagirsak", "ishal"],
+        tanisal_bolum: "Dahiliye", tedavi_bolum: "Dahiliye",
+        acil_durum: ["Ani karın ağrısı ile birlikte kusma ve gaz/gaita çıkaramama"],
+        yapilmasi_gereken: "Bağırsak hareketleri ve gazlanma sorunları için Dahiliye'ye başvurulur.", aciklama: "Bağırsak hareketlerinin değerlendirilmesi."
+    },
+    {
+        id: 548, semptom: "Ateş ve Titreme ile Gelen Karın Ağrısı",
+        anahtar_kelimeler: ["ates", "titreme", "karin agrisi", "enfeksiyon", "apandisit", "kolit"],
+        tanisal_bolum: "Genel Cerrahi / Enfeksiyon Hastalıkları", tedavi_bolum: "Genel Cerrahi",
+        acil_durum: ["**ACİL SERVİS**"],
+        yapilmasi_gereken: "Apandisit, safra kesesi iltihabı veya böbrek enfeksiyonu şüphesiyle acilen Genel Cerrahi'ye başvurulur.", aciklama: "Akut karın ve cerrahi acil durumlar."
+    },
+    {
+        id: 549, semptom: "Karnın Orta Üst Bölge Ağrısı (Yemekten Sonra)",
+        anahtar_kelimeler: ["karin", "orta", "ust", "pankreas", "mide", "agri"],
+        tanisal_bolum: "Gastroenteroloji", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Sırt'a vuran şiddetli, kuşak tarzı ağrı"],
+        yapilmasi_gereken: "Mide ülseri veya pankreas sorunları için Gastroenteroloji'ye başvurulur.", aciklama: "Pankreas ve mide sorunları."
+    },
 
     // --- DERMATOLOJİ, ÜREME VE PSİKİYATRİ (ID: 301-450+) ---
     {
@@ -226,6 +583,155 @@ const SEMPTOM_VERILERI = [
         yapilmasi_gereken: "Hormonal ve dolaşım sistemi kaynaklı sorunların tespiti için Üroloji'ye başvurulur.", aciklama: "Erkek üreme ve cinsel sağlığı."
     },
     //... (Diğer 150+ Dermatoloji, Üreme ve Psikiyatri Semptomu)
+
+    // --- YENİ EKLENEN DERMATOLOJİ, ÜREME VE PSİKİYATRİ SEMPTOMLARI (ID: 550-570) ---
+    {
+        id: 550, semptom: "Ciltte Kaşıntılı Kızarıklık ve Kabarıklık (Ürtiker)",
+        anahtar_kelimeler: ["kızarıklık", "kasinti", "kabarma", "ürtiker", "alerji"],
+        tanisal_bolum: "Dermatoloji / Alerji", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Nefes darlığı", "Yüz ve dil şişmesi"],
+        yapilmasi_gereken: "Alerjik veya kronik kurdeşen (Ürtiker) tanısı ve tedavisi için Dermatoloji'ye başvurulur.", aciklama: "Alerjik deri reaksiyonları."
+    },
+    {
+        id: 551, semptom: "Ciltte Pullu, Kabuklu, Kaşıntılı Plaklar (Egzama)",
+        anahtar_kelimeler: ["egzama", "dermatit", "kasinti", "cilt", "kuruluk"],
+        tanisal_bolum: "Dermatoloji", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Şiddetli yaygın enfeksiyon"],
+        yapilmasi_gereken: "Atopik dermatit (Egzama) veya diğer cilt iltihapları için Dermatoloji'ye başvurulur.", aciklama: "Derinin iltihabi reaksiyonları."
+    },
+    {
+        id: 552, semptom: "Akne (Şiddetli ve İz Bırakan)",
+        anahtar_kelimeler: ["sivilce", "akne", "cilt", "hormon", "iz"],
+        tanisal_bolum: "Dermatoloji / Endokrinoloji", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Şiddetli akne (Sivilce) ve altta yatan hormonal nedenlerin tespiti için Dermatoloji'ye başvurulur.", aciklama: "Cilt ve hormonal sistem sorunları."
+    },
+    {
+        id: 553, semptom: "Kadında Anormal Vajinal Akıntı ve Kaşıntı",
+        anahtar_kelimeler: ["vajina", "akinti", "kasinti", "mantar", "enfeksiyon"],
+        tanisal_bolum: "Kadın Hastalıkları ve Doğum", tedavi_bolum: "Kadın Hastalıkları ve Doğum",
+        acil_durum: ["Yüksek ateş ve karın ağrısı"],
+        yapilmasi_gereken: "Vajinal enfeksiyon (Mantar, Bakteriyel) veya cinsel yolla bulaşan hastalıklar için Jinekoloji'ye başvurulur.", aciklama: "Kadın üreme sistemi enfeksiyonları."
+    },
+    {
+        id: 554, semptom: "İdrar Yaparken Ağrı ve Yanma",
+        anahtar_kelimeler: ["idrar", "yanma", "agri", "sistit", "enfeksiyon", "uroloji"],
+        tanisal_bolum: "Üroloji / Nefroloji / Kadın Hastalıkları", tedavi_bolum: "Üroloji",
+        acil_durum: ["Belde şiddetli ağrı ve yüksek ateş"],
+        yapilmasi_gereken: "İdrar yolu enfeksiyonu (Sistit) veya böbrek taşları şüphesiyle Üroloji'ye başvurulur.", aciklama: "Üriner sistem enfeksiyonları."
+    },
+    {
+        id: 555, semptom: "Erkekte İdrarda Kan (Hematüri)",
+        anahtar_kelimeler: ["idrar", "kan", "hematüri", "mesane", "böbrek"],
+        tanisal_bolum: "Üroloji", tedavi_bolum: "Üroloji",
+        acil_durum: ["Pıhtılı kanama", "Şiddetli ağrı"],
+        yapilmasi_gereken: "Böbrek, mesane veya prostat sorunları tespiti için acilen Üroloji'ye başvurulur.", aciklama: "Üriner sistem kanamaları."
+    },
+    {
+        id: 556, semptom: "Panik Atak (Tekrarlayan Korku Nöbetleri)",
+        anahtar_kelimeler: ["panik", "atak", "korku", "kaygi", "anksiyete"],
+        tanisal_bolum: "Psikiyatri", tedavi_bolum: "Psikiyatri",
+        acil_durum: ["Kendine zarar verme riski"],
+        yapilmasi_gereken: "Panik Bozukluk ve Anksiyete bozuklukları için Psikiyatri'ye başvurulur.", aciklama: "Anksiyete ve panik bozuklukları."
+    },
+    {
+        id: 557, semptom: "Obsesif Düşünceler ve Tekrarlayan Davranışlar (OKB)",
+        anahtar_kelimeler: ["okb", "obsesif", "kompulsif", "takinti", "psikiyatri"],
+        tanisal_bolum: "Psikiyatri", tedavi_bolum: "Psikiyatri",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Obsesif Kompulsif Bozukluk (OKB) tanısı ve tedavisi için Psikiyatri'ye başvurulur.", aciklama: "Kaygı ve takıntı bozuklukları."
+    },
+    {
+        id: 558, semptom: "Hafıza Kaybı ve Unutkanlık (Günlük Yaşamı Etkileyen)",
+        anahtar_kelimeler: ["hafiza", "unutkanlik", "bunama", "demans", "alzheimer"],
+        tanisal_bolum: "Nöroloji / Psikiyatri", tedavi_bolum: "Nöroloji",
+        acil_durum: ["Bilinç bulanıklığı"],
+        yapilmasi_gereken: "Demans (Bunama), Alzheimer veya vitamin eksiklikleri tespiti için Nöroloji'ye başvurulur.", aciklama: "Bilişsel işlev bozuklukları."
+    },
+    {
+        id: 559, semptom: "Erkekte Testiste Ağrı ve Şişlik",
+        anahtar_kelimeler: ["testis", "agri", "sislik", "torsiyon", "iltihap"],
+        tanisal_bolum: "Üroloji", tedavi_bolum: "Üroloji",
+        acil_durum: ["Ani, şiddetli ağrı. **ACİL SERVİS**"],
+        yapilmasi_gereken: "Testis iltihabı (Orşit) veya Testis Torsiyonu şüphesiyle acilen Üroloji'ye başvurulur.", aciklama: "Erkek üreme sistemi acil durumları."
+    },
+    {
+        id: 560, semptom: "Kadında Adet Düzensizliği ve Aşırı Kanama",
+        anahtar_kelimeler: ["adet", "kanama", "duzensizlik", "jinekoloji", "polikistik"],
+        tanisal_bolum: "Kadın Hastalıkları ve Doğum", tedavi_bolum: "Kadın Hastalıkları ve Doğum",
+        acil_durum: ["Durdurulamayan kanama"],
+        yapilmasi_gereken: "Hormonal dengesizlikler, polikistik over veya miyom şüphesiyle Jinekoloji'ye başvurulur.", aciklama: "Kadın hormonal ve üreme sistemi sorunları."
+    },
+    {
+        id: 561, semptom: "Tırnaklarda Renk/Şekil Değişikliği ve Kalınlaşma",
+        anahtar_kelimeler: ["tirnak", "mantar", "renk", "kalinlasma", "dermatoloji"],
+        tanisal_bolum: "Dermatoloji (Cildiye)", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Tırnak mantarı (Onikomikoz) veya sedef hastalığı gibi tırnak hastalıkları için Dermatoloji'ye başvurulur.", aciklama: "Tırnak hastalıkları."
+    },
+    {
+        id: 562, semptom: "Kontrol Edilemeyen Öfke Patlamaları",
+        anahtar_kelimeler: ["ofke", "sinir", "psikiyatri", "duygudurum"],
+        tanisal_bolum: "Psikiyatri", tedavi_bolum: "Psikiyatri",
+        acil_durum: ["Şiddet eğilimi"],
+        yapilmasi_gereken: "Duygudurum veya dürtü kontrol bozuklukları için Psikiyatri'ye başvurulur.", aciklama: "Duygudurum bozuklukları."
+    },
+    {
+        id: 563, semptom: "Saç Dökülmesi (Yaygın ve Yoğun)",
+        anahtar_kelimeler: ["sac", "dökülme", "alopesı", "dermatoloji", "tiroid"],
+        tanisal_bolum: "Dermatoloji / Endokrinoloji", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Hormonal, vitamin eksiklikleri veya otoimmün nedenlerin tespiti için Dermatoloji'ye başvurulur.", aciklama: "Saç ve hormonal sağlık."
+    },
+    {
+        id: 564, semptom: "Vücutta İstem Dışı Titreme (Tremor)",
+        anahtar_kelimeler: ["titreme", "tremor", "parkinson", "sinir", "nöroloji"],
+        tanisal_bolum: "Nöroloji", tedavi_bolum: "Nöroloji",
+        acil_durum: ["Yürümede ve dengede bozulma"],
+        yapilmasi_gereken: "Esansiyel tremor, Parkinson veya diğer nörolojik hastalıklar için Nöroloji'ye başvurulur.", aciklama: "Hareket bozuklukları."
+    },
+    {
+        id: 565, semptom: "Cinsel İstekte Azalma (Libido Kaybı)",
+        anahtar_kelimeler: ["cinsel", "istek", "libido", "hormon", "psikiyatri"],
+        tanisal_bolum: "Endokrinoloji / Psikiyatri", tedavi_bolum: "Endokrinoloji / Psikiyatri",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Hormonal dengesizlikler (Testosteron, Prolaktin) veya psikolojik nedenler için Endokrinoloji/Psikiyatri'ye başvurulur.", aciklama: "Hormonal ve ruh sağlığı sorunları."
+    },
+    {
+        id: 566, semptom: "Uykuda Bacakları Hareket Ettirme İsteği (Huzursuz Bacak)",
+        anahtar_kelimeler: ["huzursuz bacak", "uyku", "kramp", "demır", "nöroloji"],
+        tanisal_bolum: "Nöroloji", tedavi_bolum: "Nöroloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Huzursuz Bacak Sendromu tanısı ve demir eksikliği kontrolü için Nöroloji'ye başvurulur.", aciklama: "Uyku ve hareket bozuklukları."
+    },
+    {
+        id: 567, semptom: "Erkekte Prostat Büyümesi Belirtileri (Sık İdrara Çıkma)",
+        anahtar_kelimeler: ["prostat", "idrar", "sık", "gece", "uroloji"],
+        tanisal_bolum: "Üroloji", tedavi_bolum: "Üroloji",
+        acil_durum: ["Hiç idrar yapamama"],
+        yapilmasi_gereken: "Prostat büyümesi (BPH) veya prostat kanseri şüphesiyle Üroloji'ye başvurulur.", aciklama: "Erkek üriner sistem sorunları."
+    },
+    {
+        id: 568, semptom: "Tırnaklarda Beyaz Lekeler",
+        anahtar_kelimeler: ["tirnak", "beyaz", "leke", "vitamin", "çinko"],
+        tanisal_bolum: "Dermatoloji / Dahiliye", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Çinko eksikliği veya tırnak travmaları için Dermatoloji'ye başvurulur.", aciklama: "Mineral eksikliklerinin değerlendirilmesi."
+    },
+    {
+        id: 569, semptom: "Sırt ve Göğüste Sivilce (Akne)",
+        anahtar_kelimeler: ["sırt", "gogus", "akne", "sivilce"],
+        tanisal_bolum: "Dermatoloji", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Vücut aknesi ve tedavi planlaması için Dermatoloji'ye başvurulur.", aciklama: "Cilt hastalıkları."
+    },
+    {
+        id: 570, semptom: "Duygusal Küntleşme ve İlgi Kaybı",
+        anahtar_kelimeler: ["duygusal", "küntlesme", "ilgi", "kaybi", "depresyon"],
+        tanisal_bolum: "Psikiyatri", tedavi_bolum: "Psikiyatri",
+        acil_durum: ["İntihar düşüncesi"],
+        yapilmasi_gereken: "Ağır Depresyon veya duygudurum bozuklukları için Psikiyatri'ye başvurulur.", aciklama: "Ruh sağlığı bozuklukları."
+    }
 ];
 
 
@@ -308,4 +814,3 @@ function detaylariGoster(id) {
         </div>
     `;
 }
-
