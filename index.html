@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semptom Protokol Rehberi | Tıbbi Yönlendirme Sistemi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #4db6ac; /* Huzurlu Mint/Teal */
-            --primary-gradient: linear-gradient(135deg, #4db6ac 0%, #81c784 100%);
-            --accent-color: #ffb300; /* Yumuşak Altın Sarısı (Vurgu) */
-            --background-light: #f5f5f5; /* Çok Açık Gri (Sakin) */
+            --primary-color: #0077b6; /* Canlı Okyanus Mavisi */
+            --primary-gradient: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+            --accent-color: #ffd166; /* Parlak Altın Sarısı */
+            --background-light: #f4f8fb; /* Çok Açık Mavi/Gri */
             --card-background: #ffffff; 
-            --text-dark: #37474f; /* Koyu Mavi/Gri */
-            --danger-color: #e57373; /* Yumuşak Kırmızı (Alarm) */
-            --font-header: 'Comfortaa', cursive;
-            --font-body: 'Roboto', sans-serif;
-            --shadow-huzur: 0 10px 30px rgba(0, 0, 0, 0.1); 
-            --shadow-lift: 0 5px 15px rgba(0, 0, 0, 0.08); 
-            --border-radius-xxl: 32px; /* Ekstra Yumuşak Köşeler */
-            --border-radius-soft: 12px;
+            --text-dark: #1f3a5f; /* Koyu Lacivert */
+            --danger-color: #e63946; /* Dinamik Kırmızı */
+            --font-header: 'Montserrat', sans-serif;
+            --font-body: 'Lato', sans-serif;
+            --shadow-vibrant: 0 15px 40px rgba(0, 0, 0, 0.15); 
+            --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* İç gölge */
+            --border-radius-xl: 28px;
         }
 
         body {
@@ -30,7 +29,6 @@
             background-color: var(--background-light);
             min-height: 100vh;
             color: var(--text-dark);
-            transition: background-color 0.4s;
         }
         
         /* --- HEADER (HERO SECTION) STYLES --- */
@@ -38,18 +36,18 @@
             background: var(--primary-gradient);
             color: white;
             padding: 4.5rem 0 8rem; 
-            box-shadow: var(--shadow-huzur);
-            border-bottom-left-radius: var(--border-radius-xxl);
-            border-bottom-right-radius: var(--border-radius-xxl);
+            box-shadow: var(--shadow-vibrant);
+            border-bottom-left-radius: var(--border-radius-xl);
+            border-bottom-right-radius: var(--border-radius-xl);
             position: relative; 
             z-index: 5;
         }
         
         .header-section h1 {
             font-family: var(--font-header);
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
             margin-bottom: 0.5rem;
         }
 
@@ -64,13 +62,13 @@
             background-color: var(--card-background);
             border-radius: 50px; 
             padding: 12px; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Daha belirgin gölge */
             transition: transform 0.4s ease;
         }
         
         .search-wrapper:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2); 
+            transform: translateY(-6px);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.25); 
         }
 
         #arama_input {
@@ -79,6 +77,7 @@
             border: none;
             font-size: 1.1rem;
             font-weight: 500;
+            box-shadow: var(--shadow-inner); /* İç gölge ekledik */
         }
         
         .input-group-text {
@@ -90,69 +89,70 @@
             padding: 12px 28px;
             font-size: 1.3rem;
             cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
-        /* --- SONUÇ KARTI --- */
+        /* --- SONUÇ KARTI (ŞIK KUTULAR) --- */
         #detay_karti {
             background-color: var(--card-background);
-            border-radius: var(--border-radius-xxl);
-            box-shadow: var(--shadow-huzur);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-vibrant);
             padding: 50px;
             margin-top: 5rem; 
             min-height: 550px;
             position: relative;
         }
         
-        /* Kartın Köşesine Süslü Desen */
-        #detay_karti::before { content: "🌿"; position: absolute; top: 20px; right: 30px; font-size: 2.5rem; opacity: 0.4; transform: rotate(10deg); }
-        #detay_karti::after { content: "✨"; position: absolute; bottom: 20px; left: 30px; font-size: 1.5rem; opacity: 0.6; transform: rotate(-10deg); }
+        /* Kartın Köşesine Şık Desen */
+        #detay_karti::before { content: "✨"; position: absolute; top: 25px; right: 35px; font-size: 2.5rem; opacity: 0.7; transform: rotate(15deg); color: var(--accent-color); }
+        #detay_karti::after { content: "🔹"; position: absolute; bottom: 25px; left: 35px; font-size: 1.8rem; opacity: 0.6; color: var(--primary-color); }
 
-        /* Acil Uyarı Alanı (SÜPER KOMPAKT VE SAKİN) */
+        /* Acil Uyarı Alanı (Kompakt ve Enerjik) */
         .acil-uyari-sakin {
-            background-color: #fff8e1; /* Sarımsı Hafif Arka Plan */
-            border-left: 4px solid var(--danger-color); /* İnce kırmızı çizgi */
-            padding: 10px 15px; /* Daha küçük padding */
+            background-color: #fff8e1; /* Hafif Altın Arka Plan */
+            border-left: 5px solid var(--danger-color);
+            padding: 12px 20px;
             border-radius: var(--border-radius-soft);
-            margin-bottom: 25px; /* Azaltıldı */
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            font-size: 0.85rem; /* Daha küçük font */
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            box-shadow: 0 4px 8px rgba(230, 57, 70, 0.2);
         }
         
         .acil-uyari-sakin .icon {
-            font-size: 1.2rem; /* Daha küçük ikon */
+            font-size: 1.5rem;
             color: var(--danger-color); 
-            margin-right: 10px;
+            margin-right: 12px;
         }
         
         .acil-uyari-sakin strong {
             color: var(--danger-color);
-            font-weight: 600;
+            font-weight: 700;
         }
         
-        /* Protokol Aşamaları (Kompakt Kutular) */
+        /* Protokol Aşamaları (Soft ve Estetik) */
         .asama {
-            padding: 25px; /* Azaltıldı */
+            padding: 25px;
             border-radius: 20px;
-            margin-bottom: 20px; /* Azaltıldı */
-            box-shadow: var(--shadow-lift);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-inner), 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
         
         .asama:hover {
-             transform: translateY(-4px);
-             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+             transform: translateY(-5px);
+             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .asama-tani { background-color: #e0f7fa; } /* Pastel Turkuaz */
-        .asama-tedavi { background-color: #fce4ec; } /* Pastel Pembe */
+        .asama-tedavi { background-color: #e3f2fd; } /* Pastel Açık Mavi */
         
         .asama h4 {
             font-family: var(--font-header);
             font-weight: 700;
             color: var(--text-dark);
-            font-size: 1.2rem; /* Hafif küçültüldü */
+            font-size: 1.25rem;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -161,37 +161,36 @@
         .icon-vurgu {
             font-size: 1.5rem; 
             margin-right: 12px;
-            color: var(--accent-color);
+            color: var(--accent-color); /* Altın Vurgu */
         }
-        .asama-tedavi .icon-vurgu { color: #d81b60; }
+        .asama-tani .icon-vurgu { color: #00bcd4; } /* Turkuaz Vurgu */
+        .asama-tedavi .icon-vurgu { color: #42a5f5; } /* Mavi Vurgu */
 
         .bolum-adi {
-            font-size: 2.2rem; /* Hafif küçültüldü */
+            font-size: 2.3rem; 
             font-weight: 800;
-            color: var(--accent-color); 
+            color: var(--primary-color); 
             margin-top: 5px;
             display: block;
             font-family: var(--font-header);
         }
         
-        .asama-tani .bolum-adi { color: #00838f; }
-
         .aciklama-detay {
-            font-size: 0.95rem; /* Hafif küçültüldü */
+            font-size: 0.95rem;
             color: #555;
             margin-top: 15px;
-            line-height: 1.5;
+            line-height: 1.6;
             border-top: 1px dashed #dcdcdc;
             padding-top: 15px;
         }
         
-        /* YENİ HAZIRLIK NOTU STİLİ (Kompakt ve Vurgulu) */
+        /* HAZIRLIK NOTU STİLİ (Vurgulu) */
         .hazirlik-notu-kutusu {
-            background-color: #fff9c4; /* Çok açık sarı/altın */
+            background-color: #fffde7; 
             border-radius: var(--border-radius-soft);
             padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(255, 179, 0, 0.1);
+            margin-top: 25px;
+            box-shadow: 0 4px 10px rgba(255, 209, 102, 0.3);
             border: 1px solid #ffcc80;
         }
 
@@ -217,7 +216,7 @@
         
         .placeholder-content i {
             color: var(--primary-color);
-            opacity: 0.8;
+            opacity: 0.9;
             margin-bottom: 1.5rem;
         }
         .placeholder-content h4 {
@@ -227,12 +226,12 @@
         }
         
         footer {
-            background-color: #e0e0e0;
-            color: #546e7a;
+            background-color: #e0f2f7; /* Açık Mavi Footer */
+            color: var(--text-dark);
             padding: 3rem 0;
             font-size: 0.9rem;
-            border-top-left-radius: var(--border-radius-xxl);
-            border-top-right-radius: var(--border-radius-xxl);
+            border-top-left-radius: var(--border-radius-xl);
+            border-top-right-radius: var(--border-radius-xl);
             margin-top: 4rem;
         }
     </style>
@@ -305,17 +304,18 @@
             const veri = SEMPTOM_VERILERI.find(d => d.id === id);
             const detayKarti = document.getElementById('detay_karti');
             document.getElementById('sonuclar_listesi').style.display = 'none';
-
+            
+            // ** YAZI DÜZELTMESİ YAPILMIŞTIR: Metinler düz (bold için JS'de <strong> kullanılmalı). **
             const acilListe = veri.acil_durum.map(item => `<span>${item}</span>`).join(' • ');
             const acilUyari = veri.acil_durum.length > 0 ? 
                 `<div class="acil-uyari-sakin">
                     <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
                     <div>
-                        <strong>ACİL UYARI:</strong> Eğer **${acilListe}** durumlarından biri varsa **HİÇ VAKİT KAYBETMEDEN 112'Yİ ARAYIN**!
+                        <strong>ACİL UYARI:</strong> Eğer ${acilListe} durumlarından biri varsa <strong>HİÇ VAKİT KAYBETMEDEN 112'Yİ ARAYIN</strong>!
                     </div>
                 </div>` : '';
             
-            // Hazırlık Notu Kutusu (app.js'ten gelen veri burada HTML olarak işlenir)
+            // Hazırlık Notu Kutusu
             const hazirlikNotuKutusu = veri.hazirlik_notu ? 
                 `<div class="hazirlik-notu-kutusu">
                     <h4><i class="fas fa-clipboard-list me-2" style="color:#f9a825;"></i>Muayene Öncesi Hazırlık Notu</h4>
@@ -351,7 +351,8 @@
                     </div>
                 </div>
                 
-                ${hazirlikNotuKutusu} `;
+                ${hazirlikNotuKutusu}
+            `;
             document.getElementById('arama_input').value = veri.semptom;
             document.getElementById('detay_karti').scrollIntoView({ behavior: 'smooth' });
         }
