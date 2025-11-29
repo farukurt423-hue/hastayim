@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semptom Protokol Rehberi | Tıbbi Yönlendirme Sistemi - Mutlu Noeller!</title>
+    <title>Semptom Protokol Rehberi | Tıbbi Yönlendirme Sistemi</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -21,9 +21,9 @@
             --danger-red: #d32f2f; 
             --font-heading: 'Merriweather', serif;
             --font-body: 'Lato', sans-serif;
-            --shadow-festive: 0 8px 20px rgba(0, 0, 0, 0.1);
-            --shadow-lift: 0 12px 30px rgba(0, 0, 0, 0.15);
-            --border-radius-soft: 1.25rem; 
+            --shadow-festive: 0 6px 15px rgba(0, 0, 0, 0.08); /* Yumuşatılmış gölge */
+            --shadow-lift: 0 10px 25px rgba(0, 0, 0, 0.12); /* Yumuşatılmış kalkış gölgesi */
+            --border-radius-soft: 1rem; /* Daha küçük köşeler */
             --border-radius-round: 50px;
         }
 
@@ -32,7 +32,7 @@
             background-color: var(--background-main);
             min-height: 100vh;
             color: var(--text-dark);
-            line-height: 1.7;
+            line-height: 1.6; /* Satır aralığı azaltıldı */
             position: relative;
             overflow-x: hidden;
         }
@@ -60,76 +60,76 @@
             100% { transform: translate(var(--x-end), 100vh); opacity: 0.5; }
         }
 
-        /* --- HEADER (Noel Temalı Gradien) --- */
+        /* --- HEADER (Noel Temalı Gradien, İçerik Bağımsız) --- */
         .header-section {
             background: var(--primary-gradient);
             color: white;
-            padding: 5rem 0 8.5rem; 
-            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.5); 
-            border-bottom-left-radius: 5rem; /* Daha belirgin eğim */
-            border-bottom-right-radius: 5rem;
+            padding: 4rem 0 7.5rem; /* Padding azaltıldı */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Gölge yumuşatıldı */
+            border-bottom-left-radius: 4.5rem; /* Daha küçük eğim */
+            border-bottom-right-radius: 4.5rem;
             text-align: center;
             position: relative;
-            overflow: hidden; /* İçerideki süslemeler taşmasın */
+            overflow: hidden;
         }
         .header-section::before { /* Noel Çelenk efekti */
-            content: '🎄';
+            content: '🎄'; /* Sadece görsel */
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 3rem;
-            opacity: 0.8;
+            top: 15px; /* Daha yukarı */
+            left: 15px; /* Daha sola */
+            font-size: 2.5rem; /* Boyut küçültüldü */
+            opacity: 0.7;
             transform: rotate(-15deg);
         }
         .header-section::after { /* Yılbaşı Hediyesi efekti */
-            content: '🎁';
+            content: '🎁'; /* Sadece görsel */
             position: absolute;
-            top: 25px;
-            right: 25px;
-            font-size: 2.5rem;
-            opacity: 0.7;
+            top: 20px; /* Daha yukarı */
+            right: 20px; /* Daha sağa */
+            font-size: 2.2rem; /* Boyut küçültüldü */
+            opacity: 0.6;
             transform: rotate(10deg);
         }
         
         .header-section h1 {
             font-family: var(--font-heading);
             font-weight: 900;
-            font-size: 3rem;
-            margin-bottom: 0.75rem;
-            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
+            font-size: 2.5rem; /* Başlık küçültüldü */
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+            letter-spacing: 0.5px;
         }
         .header-section p {
-            font-weight: 400;
-            font-size: 1.15rem;
-            opacity: 0.95;
+            font-weight: 300;
+            font-size: 1.05rem; /* Metin küçültüldü */
+            opacity: 0.9;
         }
 
         /* --- ARAMA KUTUSU (Altın Vurgulu) --- */
         .search-container {
             position: relative;
-            margin-top: -4rem; 
+            margin-top: -3.5rem; /* Daha yukarı çekildi */
             z-index: 10; 
         }
         .search-wrapper {
             background-color: var(--card-background);
             border-radius: var(--border-radius-round); 
-            padding: 0.8rem; 
+            padding: 0.7rem; /* Padding azaltıldı */
             box-shadow: var(--shadow-lift);
             display: flex;
             align-items: center;
-            border: 2px solid var(--accent-gold); /* Altın çerçeve */
+            border: 2px solid var(--accent-gold); 
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
         .search-wrapper:hover {
-            transform: translateY(-5px); 
+            transform: translateY(-3px); 
             border-color: #ffb300;
         }
         #arama_input {
             border: none;
             flex-grow: 1;
-            padding: 0.9rem 1.4rem; 
-            font-size: 1.05rem;
+            padding: 0.8rem 1.2rem; /* Padding azaltıldı */
+            font-size: 1rem;
             font-weight: 500;
             background-color: transparent;
             outline: none;
@@ -139,203 +139,199 @@
             color: var(--accent-gray);
         }
         .input-group-text {
-            background: var(--secondary-green); /* Yeşil Buton */
+            background: var(--secondary-green); 
             color: white;
             border: none;
             border-radius: 50%; 
-            padding: 0.8rem 1.1rem; 
-            font-size: 1.2rem;
+            padding: 0.7rem 1rem; /* Padding azaltıldı */
+            font-size: 1.1rem; /* Boyut küçültüldü */
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(56, 142, 60, 0.4);
+            box-shadow: 0 3px 8px rgba(56, 142, 60, 0.3);
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .input-group-text:hover {
             background-color: #2e7d32; 
-            transform: scale(1.08);
+            transform: scale(1.06);
         }
         
-        /* --- DETAY KARTI (Sıcak ve Şenlikli) --- */
+        /* --- DETAY KARTI (Kompakt ve Şık) --- */
         #detay_karti {
             background-color: var(--card-background);
             border-radius: var(--border-radius-soft);
             box-shadow: var(--shadow-festive);
-            padding: 3.5rem; 
-            margin-top: 4.5rem; 
-            min-height: 500px;
+            padding: 2.5rem; /* Padding azaltıldı */
+            margin-top: 3.5rem; /* Margin azaltıldı */
+            min-height: 450px; /* Min yükseklik azaltıldı */
             position: relative;
-            border: 2px solid #f0f0f0;
+            border: 1px solid #f0f0f0;
             overflow: hidden;
         }
         #detay_karti::before { /* Noel yıldızı efekti */
             content: '⭐';
             position: absolute;
-            top: 2rem; right: 2rem;
-            font-size: 2.5rem;
-            opacity: 0.6;
+            top: 1.5rem; right: 1.5rem; /* Konum ayarlandı */
+            font-size: 2rem; /* Boyut küçültüldü */
+            opacity: 0.5;
             transform: rotate(20deg);
         }
         #detay_karti::after { /* Noel kar tanesi efekti */
             content: '❄️';
             position: absolute;
-            bottom: 2rem; left: 2rem;
-            font-size: 2rem;
-            opacity: 0.5;
+            bottom: 1.5rem; left: 1.5rem; /* Konum ayarlandı */
+            font-size: 1.8rem; /* Boyut küçültüldü */
+            opacity: 0.4;
             transform: rotate(-10deg);
         }
 
         #detay_karti .card-title {
             font-family: var(--font-heading);
             font-weight: 800;
-            font-size: 2.2rem;
+            font-size: 1.8rem; /* Başlık küçültüldü */
             color: var(--text-dark);
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem; /* Margin azaltıldı */
             text-align: center;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.2px;
         }
         #detay_karti .card-title i {
-            color: var(--primary-red); /* Kırmızı ikon */
-            margin-right: 0.8rem;
-            font-size: 2.4rem;
+            color: var(--primary-red); 
+            margin-right: 0.7rem;
+            font-size: 2rem; /* İkon boyutu ayarlandı */
         }
 
-        /* ACİL UYARI KUTUSU (Noel Kırmızısı) */
+        /* ACİL UYARI KUTUSU (Kompakt) */
         .acil-uyari-kutusu {
             background-color: #ffebee; 
-            border-left: 6px solid var(--danger-red);
-            padding: 1.5rem;
+            border-left: 5px solid var(--danger-red); /* Kalınlık azaltıldı */
+            padding: 1.2rem; /* Padding azaltıldı */
             border-radius: var(--border-radius-soft);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem; /* Margin azaltıldı */
             display: flex;
             align-items: center;
-            font-size: 1rem;
+            font-size: 0.9rem; /* Font boyutu azaltıldı */
             color: #b71c1c; 
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+            box-shadow: 0 3px 10px rgba(211, 47, 47, 0.15);
         }
         .acil-uyari-kutusu .icon {
-            font-size: 2rem;
+            font-size: 1.6rem; /* İkon boyutu azaltıldı */
             color: var(--danger-red); 
-            margin-right: 1.2rem;
+            margin-right: 1rem;
         }
         .acil-uyari-kutusu strong {
-            font-weight: 800;
+            font-weight: 700;
         }
 
-        /* PROTOKOL AŞAMALARI (Noel Temalı Kartlar) */
+        /* PROTOKOL AŞAMALARI (Daha Kompakt Kartlar) */
         .asama-card {
-            background-color: #fcfcfc; /* Çok hafif arka plan */
+            background-color: #fcfcfc; 
             border-radius: var(--border-radius-soft);
             box-shadow: var(--shadow-festive);
-            padding: 2rem;
-            margin-bottom: 1.8rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1.5rem; /* Padding azaltıldı */
+            margin-bottom: 1.5rem; /* Margin azaltıldı */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             border: 1px solid #e0e0e0;
             position: relative;
             overflow: hidden;
+            height: auto; /* Yükseklik esnek */
         }
-        .asama-card::before { /* Dekoratif bant */
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 8px;
-            background: linear-gradient(90deg, var(--primary-red), var(--secondary-green));
-            opacity: 0.8;
+        .asama-card::before { 
+            height: 6px; /* Kalınlık azaltıldı */
         }
         .asama-card:hover {
-            transform: translateY(-7px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lift);
         }
         .asama-card h4 {
             font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.3rem;
+            font-weight: 600;
+            font-size: 1.1rem; /* Başlık küçültüldü */
             color: var(--text-dark);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem; /* Margin azaltıldı */
         }
         .asama-card .icon-label {
-            font-size: 1.6rem;
-            margin-right: 1rem;
-            color: var(--secondary-green); /* Yeşil ikonlar */
+            font-size: 1.3rem; /* İkon boyutu azaltıldı */
+            margin-right: 0.8rem;
+            color: var(--secondary-green); 
         }
         
         .asama-card .bolum-adi {
             font-family: var(--font-heading);
             font-weight: 900;
-            font-size: 2.5rem;
-            color: var(--primary-red); /* Kırmızı bölüm adı */
-            margin-top: 0.75rem;
+            font-size: 1.9rem; /* Bölüm adı küçültüldü */
+            color: var(--primary-red); 
+            margin-top: 0.5rem; /* Margin azaltıldı */
             display: block;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.2px;
         }
         .asama-card.tani .bolum-adi {
-             color: var(--secondary-green); /* Tanı için Yeşil */
+             color: var(--secondary-green); 
         }
 
         .asama-card .aciklama-detay {
-            font-size: 0.95rem;
+            font-size: 0.85rem; /* Metin boyutu azaltıldı */
             color: var(--accent-gray);
-            margin-top: 1.25rem;
+            margin-top: 1rem;
             border-top: 1px dashed #e0e0e0;
-            padding-top: 1.25rem;
+            padding-top: 1rem;
         }
 
-        /* HAZIRLIK NOTU KUTUSU (Altın Vurgulu) */
+        /* HAZIRLIK NOTU KUTUSU (Kompakt) */
         .hazirlik-notu-kutusu {
             background-color: #fffde7; 
-            border: 2px dashed var(--accent-gold); /* Altın çerçeve */
-            padding: 1.75rem;
+            border: 1px dashed var(--accent-gold); /* Çerçeve kalınlığı azaltıldı */
+            padding: 1.5rem; /* Padding azaltıldı */
             border-radius: var(--border-radius-soft);
-            margin-top: 3rem;
-            font-size: 1rem;
+            margin-top: 2rem; /* Margin azaltıldı */
+            font-size: 0.9rem; /* Font boyutu azaltıldı */
             color: #6d4c41; 
-            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+            box-shadow: 0 3px 10px rgba(255, 193, 7, 0.15);
         }
         .hazirlik-notu-kutusu h4 {
             color: var(--accent-gold);
             font-family: var(--font-heading);
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem; /* Başlık küçültüldü */
+            margin-bottom: 0.75rem;
         }
         .hazirlik-notu-kutusu h4 i {
             color: var(--accent-gold);
         }
 
-        /* Placeholder Content */
+        /* Placeholder Content (Kompakt) */
         .placeholder-content {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            padding-top: 3rem; /* Padding azaltıldı */
+            padding-bottom: 3rem; /* Padding azaltıldı */
             color: var(--accent-gray);
             text-align: center;
         }
         .placeholder-content i {
-            color: var(--secondary-green); /* Yeşil ikon */
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
-            font-size: 4.5rem;
+            color: var(--secondary-green); 
+            opacity: 0.7;
+            margin-bottom: 1rem; /* Margin azaltıldı */
+            font-size: 3.5rem; /* İkon boyutu azaltıldı */
         }
         .placeholder-content h4 {
             color: var(--text-dark);
             font-weight: 700;
             font-family: var(--font-heading);
-            margin-bottom: 0.75rem;
-            font-size: 1.8rem;
+            margin-bottom: 0.6rem; /* Margin azaltıldı */
+            font-size: 1.6rem; /* Başlık küçültüldü */
         }
         .placeholder-content p {
-            font-size: 0.95rem;
-            max-width: 480px;
+            font-size: 0.9rem; /* Metin boyutu azaltıldı */
+            max-width: 450px; /* Genişlik ayarlandı */
             margin: 0 auto;
         }
 
-        /* FOOTER (Noel Temalı) */
+        /* FOOTER (Noel Temalı, Metin düzeltildi) */
         footer {
-            background-color: var(--secondary-green); /* Yeşil Footer */
+            background-color: var(--secondary-green); 
             color: rgba(255, 255, 255, 0.9);
-            padding: 2.5rem 0;
-            font-size: 0.9rem;
+            padding: 2rem 0; /* Padding azaltıldı */
+            font-size: 0.85rem; /* Font boyutu ayarlandı */
             text-align: center;
             border-top-left-radius: var(--border-radius-soft);
             border-top-right-radius: var(--border-radius-soft);
-            margin-top: 4.5rem;
-            box-shadow: 0 -5px 20px rgba(56, 142, 60, 0.3);
+            margin-top: 3.5rem; /* Margin azaltıldı */
+            box-shadow: 0 -3px 15px rgba(56, 142, 60, 0.2);
         }
         footer p {
             margin-bottom: 0;
@@ -343,9 +339,9 @@
             font-weight: 300;
         }
         footer i {
-            margin-right: 8px;
-            color: var(--accent-gold); /* Altın ikon */
-            font-size: 1.1rem;
+            margin-right: 6px; /* Margin azaltıldı */
+            color: var(--accent-gold); 
+            font-size: 1rem; /* İkon boyutu ayarlandı */
         }
     </style>
 </head>
@@ -354,8 +350,8 @@
 
     <header class="header-section">
         <div class="container">
-            <h1><i class="fas fa-snowflake me-3"></i>Noel Rehberi ile Sağlıklı Kalın!</h1>
-            <p>Şikayetiniz ne olursa olsun, doğru uzmana giden yolu bulmanız için yanınızdayız.</p>
+            <h1><i class="fas fa-stethoscope me-2"></i>Dijital Sağlık Rehberi</h1>
+            <p>Hızlı ve doğru tıbbi yönlendirme ile sağlığınıza odaklanın.</p>
         </div>
     </header>
 
@@ -369,7 +365,7 @@
                             type="text" 
                             id="arama_input" 
                             class="form-control" 
-                            placeholder="Şikayetinizi buraya yazın (Örn: Soğuk algınlığı, öksürük...)" 
+                            placeholder="Şikayetinizi buraya yazın (Örn: Baş dönmesi, mide ağrısı...)" 
                             onkeyup="aramaYap()" 
                             autocomplete="off">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -382,10 +378,10 @@
             <div class="col-lg-10">
                 <div id="detay_karti" class="card">
                     <div class="placeholder-content">
-                        <i class="fas fa-holly-berry fa-4x mb-4"></i>
-                        <h4>Mutlu ve Sağlıklı Bir Yılbaşı!</h4>
+                        <i class="fas fa-hands-helping fa-4x mb-4"></i>
+                        <h4>Başlamaya Hazırız!</h4>
                         <p class="mt-3">
-                            Arama yaparak uzman önerilerini görüntüleyin. Unutmayın, bu sadece bir rehberdir; tıbbi teşhis ve tedavi için daima hekime başvurunuz.
+                            Arama yaparak uzman önerilerini görüntüleyin. Unutmayın, bu sadece bir ön rehberdir; tıbbi teşhis ve tedavi için daima hekime başvurunuz.
                         </p>
                     </div>
                 </div>
@@ -395,7 +391,7 @@
 
     <footer>
         <div class="container">
-            <p><i class="fas fa-gift"></i> Faruk Kurt tarafından oluşturulmuştur.</p>
+            <p><i class="fas fa-user-tie"></i> Faruk Kurt tarafından oluşturulmuştur.</p>
         </div>
     </footer>
 
@@ -411,12 +407,12 @@
             for (let i = 0; i < numFlakes; i++) {
                 const flake = document.createElement('div');
                 flake.classList.add('snow-flake');
-                flake.style.width = `${Math.random() * 5 + 2}px`; /* 2-7px */
+                flake.style.width = `${Math.random() * 4 + 1}px`; /* 1-5px */
                 flake.style.height = flake.style.width;
                 flake.style.left = `${Math.random() * 100}vw`;
-                flake.style.animationDuration = `${Math.random() * 10 + 5}s`; /* 5-15s */
-                flake.style.animationDelay = `${Math.random() * 10}s`;
-                flake.style.setProperty('--x-end', `${Math.random() * 200 - 100}px`); /* -100px to +100px horizontal drift */
+                flake.style.animationDuration = `${Math.random() * 9 + 4}s`; /* 4-13s */
+                flake.style.animationDelay = `${Math.random() * 9}s`;
+                flake.style.setProperty('--x-end', `${Math.random() * 100 - 50}px`); /* -50px to +50px horizontal drift */
                 snowContainer.appendChild(flake);
             }
         });
@@ -440,7 +436,7 @@
             const acilListe = veri.acil_durum.map(item => `<span>${item}</span>`).join(' • ');
             const acilUyari = veri.acil_durum.length > 0 ? 
                 `<div class="acil-uyari-kutusu">
-                    <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
                     <div>
                         <strong>ACİL UYARI:</strong> Eğer ${acilListe} durumlarından biri varsa lütfen <strong>HİÇ VAKİT KAYBETMEDEN 112'Yİ ARAYIN</strong>!
                     </div>
@@ -448,19 +444,18 @@
             
             const hazirlikNotuKutusu = veri.hazirlik_notu ? 
                 `<div class="hazirlik-notu-kutusu">
-                    <h4><i class="fas fa-bell me-1"></i>Muayene Öncesi Hazırlık Notu</h4>
+                    <h4><i class="fas fa-clipboard-check me-1"></i>Muayene Öncesi Hazırlık Notu</h4>
                     <p>${veri.hazirlik_notu}</p>
                 </div>` : '';
                 
             detayKarti.innerHTML = `
-                <h3 class="card-title"><i class="fas fa-stethoscope"></i> ${veri.semptom} İçin Yönlendirme</h3>
+                <h3 class="card-title"><i class="fas fa-file-medical-alt"></i> ${veri.semptom} İçin Yönlendirme</h3>
                 
                 ${acilUyari}
                 
-                <div class="protokol-asamalari row mt-4">
-                    <div class="col-md-6">
+                <div class="protokol-asamalari row mt-3"> <div class="col-md-6">
                         <div class="asama-card tani">
-                            <h4><i class="fas fa-clinic-medical icon-label"></i>Öncelikli Başvuru: Tanısal Uzmanlık</h4>
+                            <h4><i class="fas fa-microscope icon-label"></i>Öncelikli Başvuru: Tanısal Uzmanlık</h4>
                             <span class="bolum-adi">${veri.tanisal_bolum}</span>
                             <p class="aciklama-detay">
                                 <strong>Değerlendirme ve Teşhis:</strong> ${veri.aciklama}
@@ -490,10 +485,10 @@
             if (detayKarti.innerHTML.trim() === '' || detayKarti.children.length === 0) {
                  detayKarti.innerHTML = `
                     <div class="placeholder-content text-center">
-                        <i class="fas fa-holly-berry fa-4x mb-4"></i>
-                        <h4>Mutlu ve Sağlıklı Bir Yılbaşı!</h4>
+                        <i class="fas fa-hands-helping fa-4x mb-4"></i>
+                        <h4>Başlamaya Hazırız!</h4>
                         <p class="mt-3">
-                            Arama yaparak uzman önerilerini görüntüleyin. Unutmayın, bu sadece bir rehberdir; tıbbi teşhis ve tedavi için daima hekime başvurunuz.
+                            Arama yaparak uzman önerilerini görüntüleyin. Unutmayın, bu sadece bir ön rehberdir; tıbbi teşhis ve tedavi için daima hekime başvurunuz.
                         </p>
                     </div>
                 `;
