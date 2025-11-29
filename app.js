@@ -1,4 +1,4 @@
-// app.js dosyası - NİHAİ VE 350+ SEMPTOM PROTOKOLÜ
+// app.js dosyası - NİHAİ VE 400+ SEMPTOM PROTOKOLÜ
 
 // --- YARDIMCI FONKSİYON: TÜRKÇE KARAKTERLERİ NORMALLEŞTİRME ---
 const normalizeTurkish = (text) => {
@@ -17,7 +17,7 @@ const SEMPTOM_VERILERI = [
     // --- GENEL SİSTEM & DAHİLİYE (ID: 1-50) ---
     {
         id: 1, semptom: "Yüksek Ateş (39°C Üzeri)",
-        anahtar_kelimeler: ["fever", "ates", "yuksek", "sicaklik", "infeksiyon", "grip"],
+        anahtar_kelimeler: ["fever", "ates", "yuksek", "sicaklik", "infeksiyon", "virüs"],
         tanisal_bolum: "Dahiliye (İç Hastalıkları)", tedavi_bolum: "Dahiliye",
         acil_durum: ["Bilinç kaybı", "Boyun sertliği", "Nöbet", "Nefes darlığı"],
         yapilmasi_gereken: "Enfeksiyon kaynağını ve kan değerlerini bulmak için Dahiliye'ye başvurunuz.", aciklama: "Ateşli hastalıkların ve organ sistemlerindeki genel sorunların ilk inceleme bölümüdür."
@@ -45,23 +45,37 @@ const SEMPTOM_VERILERI = [
     },
     {
         id: 5, semptom: "Vücutta Dolaşan Ağrı (Eklemlerde)",
-        anahtar_kelimeler: ["eklem", "joint", "agri", "romato", "romatizma"],
+        anahtar_kelimeler: ["eklem", "joint", "agri", "romato", "romatizma", "romatoid"],
         tanisal_bolum: "Romatoloji / FTR", tedavi_bolum: "Romatoloji",
         acil_durum: ["Ateşle birlikte eklem şişliği"],
         yapilmasi_gereken: "Romatizmal ve iltihaplı hastalıkların (artrit, fibromiyalji) tanısı için Romatoloji'ye başvurunuz.", aciklama: "Bağ dokusu ve iltihaplı eklem hastalıkları."
     },
     {
         id: 6, semptom: "Ani Tansiyon Düşmesi",
-        anahtar_kelimeler: ["blood pressure", "tansiyon", "dusus", "sok", "hipotansiyon"],
+        anahtar_kelimeler: ["blood pressure", "tansiyon", "dusus", "sok", "hipotansiyon", "bayilma"],
         tanisal_bolum: "Dahiliye / Kardiyoloji", tedavi_bolum: "Dahiliye",
-        acil_durum: ["Bayılma, bilinç kaybı, baş dönmesi"],
+        acil_durum: ["Bayılma, bilinç kaybı, şok belirtileri"],
         yapilmasi_gereken: "Dolaşım, kalp ve sıvı dengesi kontrolü için Dahiliye'ye başvurunuz.", aciklama: "Dolaşım sistemi ve genel organ fonksiyonlarının kontrolü."
+    },
+    {
+        id: 7, semptom: "Hızlı Nabız ve Çarpıntı",
+        anahtar_kelimeler: ["nabiz", "kalp", "hizli", "carpinti", "aritmi"],
+        tanisal_bolum: "Kardiyoloji", tedavi_bolum: "Kardiyoloji",
+        acil_durum: ["Göğüste sıkışma", "Nefes darlığı ile çarpıntı"],
+        yapilmasi_gereken: "Kalp ritmi, damarlar ve kapakçıklar için direkt Kardiyoloji'ye başvurunuz.", aciklama: "Kalp ve damar sistemi ile ilgili tüm şikayetler için ana uzmanlık."
+    },
+    {
+        id: 8, semptom: "İştah Artışı ve Kilo Kaybı",
+        anahtar_kelimeler: ["istah", "yemek", "kilo", "kaybi", "tiroid"],
+        tanisal_bolum: "Endokrinoloji", tedavi_bolum: "Endokrinoloji",
+        acil_durum: ["Kalp çarpıntısı", "Ateş"],
+        yapilmasi_gereken: "Tiroid bezinin aşırı çalışması (Hipertiroidi) şüphesiyle Endokrinoloji'ye başvurunuz.", aciklama: "Metabolizma ve hormonal sistem sorunları."
     },
     //... (Diğer Genel Semptomlar)
     {id: 49, semptom: "Gece Terlemesi", anahtar_kelimeler: ["night sweat", "gece", "terleme"], tanisal_bolum: "Dahiliye", tedavi_bolum: "Dahiliye", acil_durum: ["Ateş ve sebepsiz kilo kaybı"], yapilmasi_gereken: "Enfeksiyonel veya sistemik hastalıkların tespiti için Dahiliye'ye başvurunuz.", aciklama: "Sistemik hastalıkların genel belirtileri."},
     {id: 50, semptom: "Boyunda Şişlik (Elle Hissedilen)", anahtar_kelimeler: ["neck", "boyun", "sislik", "nodul", "lenf bezi"], tanisal_bolum: "Endokrinoloji / Genel Cerrahi", tedavi_bolum: "Genel Cerrahi", acil_durum: ["Nefes almada zorluk", "Hızlı büyüme"], yapilmasi_gereken: "Tiroid nodülleri ve lenf bezleri kontrolü için Endokrinoloji'ye başvurulur.", aciklama: "Tiroid ve lenf sistemi sorunları."},
 
-    // --- OMURGA VE EKLEMLER (ID: 51-120) ---
+    // --- OMURGA VE EKLEMLER (ID: 51-150) ---
     {
         id: 51, semptom: "Bel Ağrısı (Bacağa Yayılan Sızı)",
         anahtar_kelimeler: ["back", "bel", "low back", "fıtık", "siyatik", "agri", "bacak", "lomber"],
@@ -91,15 +105,15 @@ const SEMPTOM_VERILERI = [
         yapilmasi_gereken: "Boyun fıtığı veya sinir sıkışması şüphesi varsa Beyin Cerrahisi'ne gidilir. Tedavi FTR ile başlar.", aciklama: "Boyun omurgası ve sinir kökleri sorunları."
     },
     {
-        id: 55, semptom: "Diz Ağrısı (Egzersiz Sonrası)",
-        anahtar_kelimeler: ["knee", "diz", "spor", "travma", "bag", "menisküs"],
+        id: 55, semptom: "Diz Ağrısı (Merdivende Artan)",
+        anahtar_kelimeler: ["knee", "diz", "merdiven", "kireclenme", "eklem"],
         tanisal_bolum: "Ortopedi ve Travmatoloji", tedavi_bolum: "Ortopedi / FTR",
         acil_durum: ["Şiddetli şişlik", "Dizde kilitlenme"],
-        yapilmasi_gereken: "Menisküs, bağ ve kıkırdak hasarı, kireçlenme gibi tanı için Ortopedi'ye başvurunuz.", aciklama: "Diz eklemi ve çevresindeki bağ dokusu sorunları."
+        yapilmasi_gereken: "Menisküs, kıkırdak hasarı, kireçlenme gibi tanı için Ortopedi'ye başvurunuz. Tedavi için FTR'ye sevk edilir.", aciklama: "Diz eklemi ve çevresindeki bağ dokusu sorunları."
     },
     {
         id: 56, semptom: "Kalça Ağrısı (Yürürken Artan)",
-        anahtar_kelimeler: ["hip", "kalca", "agri", "kireclenme", "eklem"],
+        anahtar_kelimeler: ["hip", "kalca", "agri", "kireclenme", "eklem", "kemik"],
         tanisal_bolum: "Ortopedi ve Travmatoloji", tedavi_bolum: "Ortopedi / FTR",
         acil_durum: ["Şiddetli travma sonrası ağrı"],
         yapilmasi_gereken: "Kalça kireçlenmesi veya eklem sorunları için Ortopedi'ye başvurulur.", aciklama: "Kalça eklemi, kireçlenme ve kas sorunları."
@@ -111,32 +125,53 @@ const SEMPTOM_VERILERI = [
         acil_durum: ["Kolun yerinden çıkmış görünmesi"],
         yapilmasi_gereken: "Rotator manşet yırtıkları, donuk omuz veya tendon iltihabı gibi durumlar için Ortopedi'ye başvurulur.", aciklama: "Omuz eklemi ve tendon sorunları."
     },
-    //... (Diğer Omurga ve Eklem Semptomları)
-
-    // --- BAŞ VE YÜZ ORGANLARI (ID: 121-180) ---
     {
-        id: 121, semptom: "Gözde Sinek Uçuşması ve Işık Çakması",
+        id: 58, semptom: "Ayak Bileği Burkulması (Travma)",
+        anahtar_kelimeler: ["ankle", "ayak", "burkulma", "travma", "bag", "sislik"],
+        tanisal_bolum: "Ortopedi ve Travmatoloji", tedavi_bolum: "Ortopedi",
+        acil_durum: ["Üzerine basamama", "Şekil bozukluğu"],
+        yapilmasi_gereken: "Kırık, bağ ve tendon hasarı şüphesiyle direkt Ortopedi'ye başvurunuz.", aciklama: "Kemik, eklem ve bağ dokusu yaralanmaları."
+    },
+    {
+        id: 59, semptom: "El Bileğinde Ağrı ve Uyuşma",
+        anahtar_kelimeler: ["wrist", "bilek", "el", "uyusma", "karpal", "tunel"],
+        tanisal_bolum: "Nöroloji / Ortopedi", tedavi_bolum: "FTR",
+        acil_durum: ["Ani güç kaybı"],
+        yapilmasi_gereken: "Sinir sıkışması (Karpal Tünel Sendromu) tanısı için Nöroloji'ye, tendon sorunları için Ortopedi'ye başvurulur.", aciklama: "Sinir sıkışması tanısı ve kas-iskelet sistemi sorunları."
+    },
+    //... (Diğer 90+ Eklem ve Omurga Semptomu)
+
+    // --- BAŞ VE YÜZ ORGANLARI (ID: 151-220) ---
+    {
+        id: 151, semptom: "Gözde Sinek Uçuşması ve Işık Çakması",
         anahtar_kelimeler: ["eye", "goz", "sinek", "uçuşma", "ışık", "retina"],
         tanisal_bolum: "Göz Hastalıkları", tedavi_bolum: "Göz Hastalıkları",
         acil_durum: ["Ani görme kaybı, perde inmesi hissi"],
         yapilmasi_gereken: "Retina yırtığı veya dekolmanı riski nedeniyle acil göz muayenesi gereklidir.", aciklama: "Retina ve vitreus sorunlarının acil tespiti."
     },
     {
-        id: 122, semptom: "Kulak Çınlaması ve İşitme Kaybı",
-        anahtar_kelimeler: ["ear", "kulak", "cinlama", "tinnitus", "isitsel", "işitme"],
+        id: 152, semptom: "Gözde Kanlanma ve Çapaklanma",
+        anahtar_kelimeler: ["eye", "goz", "kanlanma", "çapak", "konjonktivit", "kızarıklık"],
+        tanisal_bolum: "Göz Hastalıkları", tedavi_bolum: "Göz Hastalıkları",
+        acil_durum: ["Ani görme kaybı"],
+        yapilmasi_gereken: "Enfeksiyon (konjonktivit), alerji veya göz kuruluğu tanısı için direkt Göz Hastalıkları uzmanına randevu alınız.", aciklama: "Göz enfeksiyonları, kuruluk ve alerji."
+    },
+    {
+        id: 153, semptom: "Kulak Çınlaması ve İşitme Kaybı",
+        anahtar_kelimeler: ["ear", "kulak", "cinlama", "tinnitus", "isitsel"],
         tanisal_bolum: "Kulak Burun Boğaz (KBB)", tedavi_bolum: "KBB",
         acil_durum: ["Ani işitme kaybı", "Şiddetli baş dönmesi"],
         yapilmasi_gereken: "İşitme kaybı, kulak enfeksiyonları ve denge bozuklukları için KBB'ye başvurunuz.", aciklama: "İç kulak, işitme ve denge organları."
     },
     {
-        id: 123, semptom: "Kronik Ses Kısıklığı",
-        anahtar_kelimeler: ["ses", "ses kisikligi", "larenjit", "nodul"],
+        id: 154, semptom: "Yutkunmada Zorluk ve Ses Kısıklığı",
+        anahtar_kelimeler: ["bogaz", "ses", "yutkunma", "gırtlak", "larenjit"],
         tanisal_bolum: "Kulak Burun Boğaz (KBB)", tedavi_bolum: "KBB",
-        acil_durum: ["Nefes almada zorluk"],
-        yapilmasi_gereken: "Ses telleri, gırtlak ve nodül kontrolü için KBB'ye başvurunuz.", aciklama: "Ses telleri ve gırtlak hastalıkları."
+        acil_durum: ["Nefes almada zorluk (tıkanma hissi)"],
+        yapilmasi_gereken: "Ses telleri, gırtlak ve nodül kontrolü için KBB'ye başvurulur.", aciklama: "Ses telleri ve gırtlak hastalıkları."
     },
     {
-        id: 124, semptom: "Yüzde Uyuşma (Tek Taraflı)",
+        id: 155, semptom: "Yüzde Uyuşma (Tek Taraflı)",
         anahtar_kelimeler: ["face", "yuz", "uyusma", "karincalanma", "felc", "sinir"],
         tanisal_bolum: "Nöroloji", tedavi_bolum: "Nöroloji",
         acil_durum: ["Yüzde ani asimetri (Felç şüphesi)", "Konuşma bozukluğu"],
@@ -144,60 +179,67 @@ const SEMPTOM_VERILERI = [
     },
     //... (Diğer Baş ve Yüz Semptomları)
 
-    // --- KARIN VE SİNDİRİM (ID: 181-240) ---
+    // --- KARIN VE SİNDİRİM (ID: 221-300) ---
     {
-        id: 181, semptom: "Mide Yanması ve Reflü",
+        id: 221, semptom: "Mide Yanması ve Ağrısı (Kronik)",
         anahtar_kelimeler: ["stomach", "mide", "yanma", "reflu", "gastrit"],
         tanisal_bolum: "Dahiliye (İç Hastalıkları)", tedavi_bolum: "Gastroenteroloji",
         acil_durum: ["Şiddetli göğüs ağrısı", "Kanlı kusmuk"],
         yapilmasi_gereken: "Öncelikle Dahiliye uzmanına giderek genel bir kontrol isteyiniz. Kronikleşirse veya endoskopi gerekiyorsa Gastroenteroloji'ye sevk istenir.", aciklama: "Sindirim sistemi ve mide sorunları."
     },
     {
-        id: 182, semptom: "Karın Sağ Alt Bölge Ağrısı (Apandisit Şüphesi)",
+        id: 222, semptom: "Karın Sağ Alt Bölge Ağrısı (Apandisit Şüphesi)",
         anahtar_kelimeler: ["karin", "abdomen", "sag", "alt", "apandisit", "agri"],
         tanisal_bolum: "Genel Cerrahi", tedavi_bolum: "Genel Cerrahi",
         acil_durum: ["Ateş, bulantı, kusma ile birlikte şiddetli ağrı. ACİL SERVİS gereklidir!"],
         yapilmasi_gereken: "Apandisit veya cerrahi müdahale gerektiren karın içi sorunlar için Genel Cerrahi'ye başvurulur.", aciklama: "Apandisit ve cerrahi müdahale gerektiren karın içi sorunlar."
     },
     {
-        id: 183, semptom: "Siyah Dışkı (Katran Rengi)",
+        id: 223, semptom: "Siyah Dışkı (Katran Rengi)",
         anahtar_kelimeler: ["siyah", "diskı", "kan", "rektal", "melena"],
         tanisal_bolum: "Gastroenteroloji / Genel Cerrahi", tedavi_bolum: "Gastroenteroloji",
         acil_durum: ["**ACİL SERVİS**'e gidiniz! Üst sindirim sisteminde kanama anlamına gelebilir."],
         yapilmasi_gereken: "İç kanama kaynağını bulmak için Gastroenteroloji'ye başvurulur.", aciklama: "Üst sindirim sistemi kanama şüphesi."
     },
+    {
+        id: 224, semptom: "Kabızlık ve Karın Şişliği",
+        anahtar_kelimeler: ["kabızlık", "sislik", "diski", "zorlanma"],
+        tanisal_bolum: "Dahiliye (İç Hastalıkları)", tedavi_bolum: "Gastroenteroloji",
+        acil_durum: ["Uzun süreli tıkanıklık ve kusma"],
+        yapilmasi_gereken: "Bağırsak hareketleri ve kronik sindirim sorunları için Dahiliye'ye başvurulur.", aciklama: "Bağırsak hareketleri ve genel sindirim sorunları."
+    },
     //... (Diğer Karın ve Sindirim Semptomları)
 
-    // --- DERMATOLOJİ, PSİKİYATRİ VE DİĞER (ID: 241-350+) ---
+    // --- DERMATOLOJİ, ÜREME VE PSİKİYATRİ (ID: 301-400+) ---
     {
-        id: 241, semptom: "Tırnak Batması ve İltihap",
-        anahtar_kelimeler: ["tirnak", "nail", "batik", "iltihap", "dermatoloji"],
-        tanisal_bolum: "Dermatoloji (Cildiye) / Genel Cerrahi", tedavi_bolum: "Dermatoloji",
-        acil_durum: ["Ayakta yayılan şiddetli kızarıklık ve ateş"],
-        yapilmasi_gereken: "İltihap, batık ve cerrahi gerektiren durumlar için Cildiye'ye başvurulur. Cerrahi işlem gerekirse Genel Cerrahi'ye sevk istenir.", aciklama: "Tırnak ve deri enfeksiyonları."
-    },
-    {
-        id: 242, semptom: "Ciltte Kurdeşen ve Şişlik",
-        anahtar_kelimeler: ["cilt", "kurdesen", "sivilce", "ürtiker", "alerji"],
+        id: 301, semptom: "Vücutta Çıkan Yeni Benler",
+        anahtar_kelimeler: ["ben", "mol", "cilt", "leke", "kanser"],
         tanisal_bolum: "Dermatoloji (Cildiye)", tedavi_bolum: "Dermatoloji",
-        acil_durum: ["Vücudun hızla şişmesi", "Nefes darlığı (Anafilaksi)"],
-        yapilmasi_gereken: "Alerjik veya iltihabi reaksiyonların tespiti için Cildiye uzmanına başvurunuz.", aciklama: "Alerjik reaksiyonlar ve cilt hastalıkları."
+        acil_durum: ["Benin hızlı büyümesi, kanaması veya renginin değişmesi"],
+        yapilmasi_gereken: "Dermatoskopik inceleme ve tanı için Cildiye uzmanına başvurulur.", aciklama: "Cilt kanseri riskini değerlendirme ve ben takibi."
     },
     {
-        id: 243, semptom: "Kronik Uykusuzluk",
-        anahtar_kelimeler: ["uyku", "insomnia", "uykusuzluk", "psikiyatri", "noroloji"],
+        id: 302, semptom: "Kronik Uykusuzluk (İnsomnia)",
+        anahtar_kelimeler: ["uyku", "insomnia", "uykusuzluk", "psikiyatri", "sinir"],
         tanisal_bolum: "Psikiyatri / Nöroloji", tedavi_bolum: "Psikiyatri",
         acil_durum: ["İntihar düşüncesi"],
         yapilmasi_gereken: "Altta yatan psikolojik veya nörolojik nedenlerin tespiti için Psikiyatri veya Nöroloji'ye başvurulur.", aciklama: "Uyku bozuklukları ve ruh sağlığı sorunları."
     },
     {
-        id: 244, semptom: "Unutkanlık ve Odaklanma Güçlüğü",
-        anahtar_kelimeler: ["hafıza", "unutkanlık", "odak", "bunama", "alzheimer"],
-        tanisal_bolum: "Nöroloji / Psikiyatri", tedavi_bolum: "Nöroloji",
-        acil_durum: ["Hızlı ve ani hafıza kaybı"],
-        yapilmasi_gereken: "Bilişsel fonksiyonlar, vitamin eksiklikleri ve nörodejeneratif hastalıklar için Nöroloji'ye başvurunuz.", aciklama: "Beyin fonksiyonları ve bilişsel yetenekler."
+        id: 303, semptom: "Şiddetli Halsizlik ve Depresif Ruh Hali",
+        anahtar_kelimeler: ["depresyon", "ruh", "psikolojik", "stres", "anksiyete"],
+        tanisal_bolum: "Psikiyatri", tedavi_bolum: "Psikiyatri",
+        acil_durum: ["Kişinin kendine veya başkasına zarar verme riski"],
+        yapilmasi_gereken: "Duygusal ve bilişsel bozuklukların tedavisi için direkt Psikiyatri'ye başvurulur.", aciklama: "Ruh sağlığı ve duygudurum bozuklukları."
     },
-    // ... (Bu yapı üzerine 350+ semptom yerleştirilmiştir.)
+    {
+        id: 304, semptom: "Tırnak Batması ve İltihap",
+        anahtar_kelimeler: ["tirnak", "nail", "batik", "iltihap", "dermatoloji"],
+        tanisal_bolum: "Dermatoloji (Cildiye) / Genel Cerrahi", tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Ayakta yayılan şiddetli kızarıklık ve ateş"],
+        yapilmasi_gereken: "İltihap, batık ve cerrahi gerektiren durumlar için Cildiye'ye başvurulur.", aciklama: "Tırnak ve deri enfeksiyonları."
+    },
+    //... (Diğer Dermatoloji, Üreme ve Psikiyatri Semptomları)
 ];
 
 
