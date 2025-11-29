@@ -4,269 +4,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semptom Protokol Rehberi | Tıbbi Yönlendirme Sistemi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #ff3366; /* Dinamik Fuşya/Bordo */
-            --primary-gradient: linear-gradient(135deg, #ff3366 0%, #ff66a3 100%);
-            --secondary-color: #33ccff; /* Elektrik Mavisi */
-            --accent-color: #ffcc00; /* Neon Sarı Vurgu */
-            --background-light: #f5f5f5; 
+            --primary-blue: #007bff; /* Temiz Mavi */
+            --primary-light-blue: #e8f4ff; /* Çok açık mavi */
+            --secondary-green: #28a745; /* Vurgu yeşili */
+            --accent-gray: #6c757d; /* Açık gri metin */
+            --background-main: #f8f9fa; /* Ana arka plan (çok açık gri) */
             --card-background: #ffffff; 
-            --text-dark: #2c3e50; 
-            --danger-color: #e63946;
-            --font-heading: 'Bebas Neue', cursive;
-            --font-body: 'Montserrat', sans-serif;
-            --shadow-vibrant: 0 15px 40px rgba(255, 51, 102, 0.4); /* Fuşya Gölge */
-            --shadow-card-lift: 0 10px 25px rgba(0, 0, 0, 0.15);
-            --border-radius-bold: 18px;
+            --text-dark: #343a40; /* Koyu gri metin */
+            --danger-red: #dc3545; /* Tehlike kırmızısı */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --border-radius-soft: 0.75rem; /* Yumuşak köşeler */
+            --border-radius-round: 50px; /* Yuvarlak formlar için */
         }
 
         body {
             font-family: var(--font-body);
-            background-color: var(--background-light);
+            background-color: var(--background-main);
             min-height: 100vh;
             color: var(--text-dark);
-            overflow-x: hidden;
-            position: relative;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
-        /* --- HEADER (HERO SECTION) STYLES --- */
+
+        /* --- HEADER (Clean & Minimal) --- */
         .header-section {
-            background: var(--primary-gradient);
+            background-color: var(--primary-blue); /* Düz renk */
             color: white;
-            padding: 5rem 0 9rem; 
-            box-shadow: var(--shadow-vibrant);
-            border-bottom-left-radius: 4rem; /* Daha dinamik eğim */
-            border-bottom-right-radius: 4rem;
-            position: relative; 
-            z-index: 5;
+            padding: 4rem 0 7rem; 
+            box-shadow: var(--shadow-light);
+            border-bottom-left-radius: var(--border-radius-soft);
+            border-bottom-right-radius: var(--border-radius-soft);
+            text-align: center;
         }
         
         .header-section h1 {
             font-family: var(--font-heading);
-            font-weight: 800;
-            font-size: 3.5rem;
-            letter-spacing: 5px; /* Yazıyı güçlendir */
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .header-section p {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
-        /* --- ARAMA KUTUSU (ŞIK VE ORTADA) --- */
+        /* --- ARAMA KUTUSU (Zarif ve Fonksiyonel) --- */
         .search-container {
             position: relative;
-            margin-top: -6rem; 
+            margin-top: -3.5rem; 
             z-index: 10; 
         }
-        
         .search-wrapper {
             background-color: var(--card-background);
-            border-radius: 50px; 
-            padding: 12px; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Derin gölge */
-            transition: transform 0.3s ease;
+            border-radius: var(--border-radius-round); 
+            padding: 0.75rem; 
+            box-shadow: var(--shadow-light);
+            display: flex;
+            align-items: center;
+            transition: box-shadow 0.3s ease;
         }
-        
         .search-wrapper:hover {
-            transform: scale(1.01);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35); 
+            box-shadow: var(--shadow-hover);
         }
-
         #arama_input {
-            border-radius: 40px; 
-            padding: 18px 25px; 
             border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Hafif iç gölge */
+            flex-grow: 1;
+            padding: 0.8rem 1.2rem; 
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: transparent;
+            outline: none;
         }
-        
+        #arama_input::placeholder {
+            color: var(--accent-gray);
+            font-weight: 400;
+        }
         .input-group-text {
-            background: var(--secondary-color); /* Mavi Buton */
+            background-color: var(--primary-blue); 
             color: white;
             border: none;
             border-radius: 50%; 
-            margin: 0 5px;
-            padding: 15px; /* Daha dolgun buton */
-            font-size: 1.4rem;
+            padding: 0.75rem 1rem; 
+            font-size: 1.1rem;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(51, 204, 255, 0.4);
-            transition: background 0.3s;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .input-group-text:hover {
+            background-color: #0056b3; /* Koyu mavi */
+            transform: scale(1.05);
         }
         
-        /* --- SONUÇ KARTI (ŞIK KUTULAR) --- */
+        #sonuclar_listesi {
+            border-radius: var(--border-radius-soft);
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+        }
+        #sonuclar_listesi .list-group-item {
+            border-color: #e9ecef;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.95rem;
+        }
+        #sonuclar_listesi .list-group-item:hover {
+            background-color: var(--primary-light-blue);
+            color: var(--primary-blue);
+        }
+
+        /* --- DETAY KARTI (Modern ve minimalist) --- */
         #detay_karti {
             background-color: var(--card-background);
-            border-radius: var(--border-radius-bold);
-            box-shadow: var(--shadow-card-lift);
-            padding: 50px;
-            margin-top: 5rem; 
-            min-height: 550px;
+            border-radius: var(--border-radius-soft);
+            box-shadow: var(--shadow-light);
+            padding: 2.5rem; /* Geniş iç boşluk */
+            margin-top: 3.5rem; 
+            min-height: 500px;
             position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(0, 0, 0, 0.05);
         }
-        
-        /* Kartın Köşesine Süslü Desen */
-        #detay_karti::before { content: "⚡"; position: absolute; top: 25px; right: 35px; font-size: 2.5rem; opacity: 0.7; transform: rotate(15deg); color: var(--accent-color); }
-        #detay_karti::after { content: "⭐"; position: absolute; bottom: 25px; left: 35px; font-size: 1.8rem; opacity: 0.6; color: var(--secondary-color); }
-
         #detay_karti .card-title {
             font-family: var(--font-heading);
             font-weight: 700;
+            font-size: 1.8rem;
             color: var(--text-dark);
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        #detay_karti .card-title i {
+            color: var(--primary-blue);
+            margin-right: 0.75rem;
         }
 
-        /* Acil Uyarı Alanı (Kompakt ve Enerjik) */
-        .acil-uyari-sakin {
-            background-color: #fff8e1; 
-            border-left: 5px solid var(--danger-color);
-            padding: 15px 20px;
-            border-radius: var(--border-radius-bold);
-            margin-bottom: 25px;
+        /* ACİL UYARI KUTUSU (Temiz ve Net) */
+        .acil-uyari-kutusu {
+            background-color: #ffebe9; /* Çok açık kırmızı */
+            border-left: 4px solid var(--danger-red);
+            padding: 1rem 1.25rem;
+            border-radius: var(--border-radius-soft);
+            margin-bottom: 1.5rem;
             display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.2);
+            align-items: flex-start; /* İçerik yukarı hizalı */
+            font-size: 0.9rem;
+            color: #721c24; /* Koyu kırmızı metin */
         }
-        
-        .acil-uyari-sakin .icon {
-            font-size: 1.8rem;
-            color: var(--danger-color); 
-            margin-right: 15px;
+        .acil-uyari-kutusu .icon {
+            font-size: 1.5rem;
+            color: var(--danger-red); 
+            margin-right: 1rem;
         }
-        
-        .acil-uyari-sakin strong {
-            color: var(--danger-color);
-            font-weight: 700;
+        .acil-uyari-kutusu strong {
+            font-weight: 600;
         }
-        
-        /* Protokol Aşamaları (Daha Şık Kartlar) */
+
+        /* PROTOKOL AŞAMALARI (Modüler Kartlar) */
         .asama-card {
-            padding: 30px;
-            border-radius: var(--border-radius-bold);
-            margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background-color: var(--background-main); /* Daha açık arka plan */
+            border-radius: var(--border-radius-soft);
+            box-shadow: var(--shadow-light);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: auto; /* Esnek yükseklik */
         }
-        
         .asama-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-hover);
         }
-
-        .asama-tani { 
-            background: linear-gradient(145deg, #e3f2fd, #b3e5fc); /* Mavi Tonları */
-            border: 1px solid #90caf9;
-            --icon-color: var(--secondary-color);
-            --bolum-color: #0d47a1; 
-        } 
-        .asama-tedavi { 
-            background: linear-gradient(145deg, #fbe9e7, #ffccbc); /* Pembe/Bordo Tonları */
-            border: 1px solid #ffab91;
-            --icon-color: var(--primary-color);
-            --bolum-color: var(--primary-color);
-        }
-        
         .asama-card h4 {
             font-family: var(--font-heading);
-            font-weight: 700;
-            color: var(--dark-text);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
         }
-        
         .asama-card .icon-label {
-            font-size: 1.8rem;
-            margin-right: 15px;
-            color: var(--icon-color);
+            font-size: 1.2rem;
+            margin-right: 0.75rem;
+            color: var(--primary-blue); /* Tüm ikonlar mavi */
         }
-
         .asama-card .bolum-adi {
             font-family: var(--font-heading);
-            font-weight: 800;
-            font-size: 3rem;
-            margin-top: 10px;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-top: 0.5rem;
             display: block;
-            color: var(--bolum-color);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
-        
-        .aciklama-detay {
-            font-size: 0.95rem;
-            color: #555;
-            margin-top: 15px;
-            line-height: 1.6;
-            border-top: 1px dashed #dcdcdc;
-            padding-top: 15px;
+        .asama-card .aciklama-detay {
+            font-size: 0.85rem;
+            color: var(--accent-gray);
+            margin-top: 1rem;
+            line-height: 1.5;
+            border-top: 1px dashed #e9ecef;
+            padding-top: 1rem;
         }
 
-        /* HAZIRLIK NOTU KUTUSU */
+        /* HAZIRLIK NOTU KUTUSU (Temiz ve Bilgilendirici) */
         .hazirlik-notu-kutusu {
-            background-color: #fffde7; 
-            border: 2px dashed var(--accent-color); /* Süslü Çerçeve */
-            padding: 25px;
-            border-radius: var(--border-radius-bold);
-            margin-top: 30px;
-            box-shadow: 0 6px 15px rgba(255, 204, 0, 0.3);
-            position: relative;
+            background-color: #f0f8f0; /* Çok açık yeşil */
+            border-left: 4px solid var(--secondary-green);
+            padding: 1.25rem;
+            border-radius: var(--border-radius-soft);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #155724; /* Koyu yeşil metin */
+        }
+        .hazirlik-notu-kutusu h4 {
+            color: var(--secondary-green);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        .hazirlik-notu-kutusu h4 i {
+            margin-right: 0.5rem;
+            color: var(--secondary-green);
         }
 
-        .hazirlik-notu-kutusu h4 {
-            color: var(--accent-color);
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-        
         /* Placeholder Content */
         .placeholder-content {
-            padding-top: 6rem;
-            padding-bottom: 6rem;
-            color: #78909c;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            color: var(--accent-gray);
+            text-align: center;
         }
         .placeholder-content i {
-            color: var(--primary-color);
-            opacity: 0.9;
+            color: var(--primary-blue);
+            opacity: 0.6;
             margin-bottom: 1.5rem;
         }
         .placeholder-content h4 {
             color: var(--text-dark);
-            font-weight: 700;
+            font-weight: 600;
             font-family: var(--font-heading);
+            margin-bottom: 0.75rem;
+        }
+        .placeholder-content p {
+            font-size: 0.9rem;
+            max-width: 450px;
+            margin: 0 auto;
         }
 
-        /* FOOTER GÜNCELLEMESİ */
+        /* FOOTER (Sade ve Modern) */
         footer {
-            background-color: #2c3e50; /* Koyu Lacivert Footer */
-            color: #f0f4f8;
-            padding: 3rem 0;
-            font-size: 0.9rem;
-            border-top-left-radius: var(--border-radius-bold);
-            border-top-right-radius: var(--border-radius-bold);
-            margin-top: 4rem;
+            background-color: var(--text-dark); /* Koyu gri */
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2rem 0;
+            font-size: 0.8rem;
+            text-align: center;
+            border-top-left-radius: var(--border-radius-soft);
+            border-top-right-radius: var(--border-radius-soft);
+            margin-top: 3rem;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+        }
+        footer p {
+            margin-bottom: 0;
+        }
+        footer i {
+            margin-right: 5px;
+            color: var(--primary-blue); /* Mavi ikon */
         }
     </style>
 </head>
 <body>
 
     <header class="header-section">
-        <div class="container text-center">
-            <h1><i class="fas fa-bolt me-3"></i>ANINDA UZMAN REHBERİ</h1>
-            <p class="lead text-white-75">Şikayetinizi yazın, doğru tıbbi rotayı hızla bulun.</p>
+        <div class="container">
+            <h1><i class="fas fa-stethoscope me-2"></i>Dijital Doktor Rehberi</h1>
+            <p>Hızlı ve doğru tıbbi yönlendirme ile sağlığınıza odaklanın.</p>
         </div>
     </header>
 
-    <div class="container pb-5">
+    <div class="container py-5">
         <div class="row justify-content-center">
             
             <div class="col-md-10 col-lg-8">
@@ -276,7 +298,7 @@
                             type="text" 
                             id="arama_input" 
                             class="form-control" 
-                            placeholder="Şikayetinizi buraya yazın (Örn: Baş ağrısı, Halsizlik...)" 
+                            placeholder="Şikayetinizi buraya yazın (Örn: Baş ağrısı, yorgunluk, karın ağrısı...)" 
                             onkeyup="aramaYap()" 
                             autocomplete="off">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -288,11 +310,12 @@
             
             <div class="col-lg-10">
                 <div id="detay_karti" class="card">
-                    <div class="placeholder-content text-center">
-                        <i class="fas fa-route fa-5x mb-4" style="color:var(--primary-color);"></i>
-                        <h4 class="mb-2">Doğru Rotayı Belirleyin.</h4>
+                    <div class="placeholder-content">
+                        <i class="fas fa-search-location fa-4x mb-4"></i>
+                        <h4>Doğru Uzmanı Keşfedin.</h4>
                         <p class="mt-3">
-                            <i class="fas fa-info-circle me-1"></i>Sadece bir rehberdir. Tıbbi teşhis ve tedavi için daima uzmana başvurun.
+                            Arama çubuğuna şikayetinizi girerek, hangi tıbbi uzmana danışmanız gerektiğini öğrenin.
+                            Unutmayın, bu bir ön rehberdir; kesin teşhis ve tedavi için daima hekime başvurunuz.
                         </p>
                     </div>
                 </div>
@@ -301,8 +324,8 @@
     </div>
 
     <footer>
-        <div class="container text-center">
-            <p class="mb-0 text-white-50">Oluşturan: **Faruk Kurt** | <i class="fas fa-code me-1"></i> Dinamik Arayüz Tasarımı</p>
+        <div class="container">
+            <p><i class="fas fa-code"></i> Faruk Kurt tarafından oluşturulmuştur.</p>
         </div>
     </footer>
 
@@ -328,41 +351,38 @@
 
             const acilListe = veri.acil_durum.map(item => `<span>${item}</span>`).join(' • ');
             const acilUyari = veri.acil_durum.length > 0 ? 
-                `<div class="acil-uyari-sakin">
+                `<div class="acil-uyari-kutusu">
                     <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
                     <div>
-                        <strong>ACİL UYARI:</strong> Eğer ${acilListe} durumlarından biri varsa <strong>HİÇ VAKİT KAYBETMEDEN 112'Yİ ARAYIN</strong>!
+                        <strong>ACİL UYARI:</strong> Eğer ${acilListe} durumlarından biri varsa lütfen <strong>HİÇ VAKİT KAYBETMEDEN 112'Yİ ARAYIN</strong>!
                     </div>
                 </div>` : '';
             
-            // Hazırlık Notu Kutusu
             const hazirlikNotuKutusu = veri.hazirlik_notu ? 
                 `<div class="hazirlik-notu-kutusu">
-                    <h4><i class="fas fa-clipboard-list me-2" style="color:var(--accent-color);"></i>Muayene Öncesi Hazırlık Notu</h4>
+                    <h4><i class="fas fa-info-circle"></i>Muayene Öncesi Hazırlık Notu</h4>
                     <p>${veri.hazirlik_notu}</p>
                 </div>` : '';
                 
             detayKarti.innerHTML = `
-                <h3 class="card-title text-center mb-5">
-                    <i class="fas fa-notes-medical"></i> ${veri.semptom} İÇİN PROTOKOL
-                </h3>
+                <h3 class="card-title"><i class="fas fa-file-medical-alt"></i> ${veri.semptom} İçin Yönlendirme</h3>
                 
                 ${acilUyari}
                 
-                <div class="protokol-asamalari row">
+                <div class="protokol-asamalari row mt-4">
                     <div class="col-md-6">
-                        <div class="asama-card asama-tani">
-                            <h4><i class="fas fa-microscope icon-label"></i>ÖNCELİKLİ BAŞVURU: TANI UZMANLIĞI</h4>
+                        <div class="asama-card">
+                            <h4><i class="fas fa-diagnoses icon-label"></i>Öncelikli Başvuru: Tanısal Uzmanlık</h4>
                             <span class="bolum-adi">${veri.tanisal_bolum}</span>
                             <p class="aciklama-detay">
-                                <strong>Değerlendirme Amacı:</strong> ${veri.aciklama}
+                                <strong>Değerlendirme ve Teşhis:</strong> ${veri.aciklama}
                             </p>
                         </div>
                     </div>
                     
                     <div class="col-md-6">
-                        <div class="asama-card asama-tedavi">
-                            <h4><i class="fas fa-medkit icon-label"></i>İKİNCİL BAŞVURU: TEDAVİ VE ÇÖZÜM</h4>
+                        <div class="asama-card">
+                            <h4><i class="fas fa-hand-holding-medical icon-label"></i>İkincil Başvuru: Tedavi ve Çözüm</h4>
                             <span class="bolum-adi">${veri.tedavi_bolum}</span>
                             <p class="aciklama-detay">
                                 <strong>Hekim Tavsiyesi:</strong> ${veri.yapilmasi_gereken}
@@ -381,11 +401,12 @@
             const detayKarti = document.getElementById('detay_karti');
             if (detayKarti.innerHTML.trim() === '' || detayKarti.children.length === 0) {
                  detayKarti.innerHTML = `
-                    <div class="placeholder-content text-center">
-                        <i class="fas fa-route fa-5x mb-4" style="color:var(--primary-color);"></i>
-                        <h4 class="mb-2">Doğru Rotayı Belirleyin.</h4>
+                    <div class="placeholder-content">
+                        <i class="fas fa-search-location fa-4x mb-4"></i>
+                        <h4>Doğru Uzmanı Keşfedin.</h4>
                         <p class="mt-3">
-                            <i class="fas fa-info-circle me-1"></i>Sadece bir rehberdir. Tıbbi teşhis ve tedavi için daima uzmana başvurun.
+                            Arama çubuğuna şikayetinizi girerek, hangi tıbbi uzmana danışmanız gerektiğini öğrenin.
+                            Unutmayın, bu bir ön rehberdir; kesin teşhis ve tedavi için daima hekime başvurunuz.
                         </p>
                     </div>
                 `;
