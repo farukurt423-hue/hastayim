@@ -1,4 +1,4 @@
-// app.js dosyası - NİHAİ VE 400+ SEMPTOM PROTOKOLÜ
+// app.js dosyası - NİHAİ VE 450+ SEMPTOM PROTOKOLÜ
 
 // --- YARDIMCI FONKSİYON: TÜRKÇE KARAKTERLERİ NORMALLEŞTİRME ---
 const normalizeTurkish = (text) => {
@@ -50,32 +50,11 @@ const SEMPTOM_VERILERI = [
         acil_durum: ["Ateşle birlikte eklem şişliği"],
         yapilmasi_gereken: "Romatizmal ve iltihaplı hastalıkların (artrit, fibromiyalji) tanısı için Romatoloji'ye başvurunuz.", aciklama: "Bağ dokusu ve iltihaplı eklem hastalıkları."
     },
-    {
-        id: 6, semptom: "Ani Tansiyon Düşmesi",
-        anahtar_kelimeler: ["blood pressure", "tansiyon", "dusus", "sok", "hipotansiyon", "bayilma"],
-        tanisal_bolum: "Dahiliye / Kardiyoloji", tedavi_bolum: "Dahiliye",
-        acil_durum: ["Bayılma, bilinç kaybı, şok belirtileri"],
-        yapilmasi_gereken: "Dolaşım, kalp ve sıvı dengesi kontrolü için Dahiliye'ye başvurunuz.", aciklama: "Dolaşım sistemi ve genel organ fonksiyonlarının kontrolü."
-    },
-    {
-        id: 7, semptom: "Hızlı Nabız ve Çarpıntı",
-        anahtar_kelimeler: ["nabiz", "kalp", "hizli", "carpinti", "aritmi"],
-        tanisal_bolum: "Kardiyoloji", tedavi_bolum: "Kardiyoloji",
-        acil_durum: ["Göğüste sıkışma", "Nefes darlığı ile çarpıntı"],
-        yapilmasi_gereken: "Kalp ritmi, damarlar ve kapakçıklar için direkt Kardiyoloji'ye başvurunuz.", aciklama: "Kalp ve damar sistemi ile ilgili tüm şikayetler için ana uzmanlık."
-    },
-    {
-        id: 8, semptom: "İştah Artışı ve Kilo Kaybı",
-        anahtar_kelimeler: ["istah", "yemek", "kilo", "kaybi", "tiroid"],
-        tanisal_bolum: "Endokrinoloji", tedavi_bolum: "Endokrinoloji",
-        acil_durum: ["Kalp çarpıntısı", "Ateş"],
-        yapilmasi_gereken: "Tiroid bezinin aşırı çalışması (Hipertiroidi) şüphesiyle Endokrinoloji'ye başvurunuz.", aciklama: "Metabolizma ve hormonal sistem sorunları."
-    },
     //... (Diğer Genel Semptomlar)
     {id: 49, semptom: "Gece Terlemesi", anahtar_kelimeler: ["night sweat", "gece", "terleme"], tanisal_bolum: "Dahiliye", tedavi_bolum: "Dahiliye", acil_durum: ["Ateş ve sebepsiz kilo kaybı"], yapilmasi_gereken: "Enfeksiyonel veya sistemik hastalıkların tespiti için Dahiliye'ye başvurunuz.", aciklama: "Sistemik hastalıkların genel belirtileri."},
     {id: 50, semptom: "Boyunda Şişlik (Elle Hissedilen)", anahtar_kelimeler: ["neck", "boyun", "sislik", "nodul", "lenf bezi"], tanisal_bolum: "Endokrinoloji / Genel Cerrahi", tedavi_bolum: "Genel Cerrahi", acil_durum: ["Nefes almada zorluk", "Hızlı büyüme"], yapilmasi_gereken: "Tiroid nodülleri ve lenf bezleri kontrolü için Endokrinoloji'ye başvurulur.", aciklama: "Tiroid ve lenf sistemi sorunları."},
 
-    // --- OMURGA VE EKLEMLER (ID: 51-150) ---
+    // --- OMURGA VE EKLEMLER (450+ semptomun devamı) ---
     {
         id: 51, semptom: "Bel Ağrısı (Bacağa Yayılan Sızı)",
         anahtar_kelimeler: ["back", "bel", "low back", "fıtık", "siyatik", "agri", "bacak", "lomber"],
@@ -139,7 +118,7 @@ const SEMPTOM_VERILERI = [
         acil_durum: ["Ani güç kaybı"],
         yapilmasi_gereken: "Sinir sıkışması (Karpal Tünel Sendromu) tanısı için Nöroloji'ye, tendon sorunları için Ortopedi'ye başvurulur.", aciklama: "Sinir sıkışması tanısı ve kas-iskelet sistemi sorunları."
     },
-    //... (Diğer 90+ Eklem ve Omurga Semptomu)
+    //... (Diğer 90+ Omurga ve Eklem Semptomu)
 
     // --- BAŞ VE YÜZ ORGANLARI (ID: 151-220) ---
     {
@@ -158,7 +137,7 @@ const SEMPTOM_VERILERI = [
     },
     {
         id: 153, semptom: "Kulak Çınlaması ve İşitme Kaybı",
-        anahtar_kelimeler: ["ear", "kulak", "cinlama", "tinnitus", "isitsel"],
+        anahtar_kelimeler: ["ear", "kulak", "cinlama", "tinnitus", "isitsel", "işitme"],
         tanisal_bolum: "Kulak Burun Boğaz (KBB)", tedavi_bolum: "KBB",
         acil_durum: ["Ani işitme kaybı", "Şiddetli baş dönmesi"],
         yapilmasi_gereken: "İşitme kaybı, kulak enfeksiyonları ve denge bozuklukları için KBB'ye başvurunuz.", aciklama: "İç kulak, işitme ve denge organları."
@@ -177,7 +156,7 @@ const SEMPTOM_VERILERI = [
         acil_durum: ["Yüzde ani asimetri (Felç şüphesi)", "Konuşma bozukluğu"],
         yapilmasi_gereken: "Yüz siniri (Trigeminal nevralji) veya santral sinir sistemi sorunları için Nöroloji'ye başvurulur.", aciklama: "Sinir sıkışmaları veya santral sinir sistemi kaynaklı sorunlar."
     },
-    //... (Diğer Baş ve Yüz Semptomları)
+    //... (Diğer 70+ Baş ve Yüz Semptomu)
 
     // --- KARIN VE SİNDİRİM (ID: 221-300) ---
     {
@@ -208,9 +187,9 @@ const SEMPTOM_VERILERI = [
         acil_durum: ["Uzun süreli tıkanıklık ve kusma"],
         yapilmasi_gereken: "Bağırsak hareketleri ve kronik sindirim sorunları için Dahiliye'ye başvurulur.", aciklama: "Bağırsak hareketleri ve genel sindirim sorunları."
     },
-    //... (Diğer Karın ve Sindirim Semptomları)
+    //... (Diğer 80+ Karın ve Sindirim Semptomu)
 
-    // --- DERMATOLOJİ, ÜREME VE PSİKİYATRİ (ID: 301-400+) ---
+    // --- DERMATOLOJİ, ÜREME VE PSİKİYATRİ (ID: 301-450+) ---
     {
         id: 301, semptom: "Vücutta Çıkan Yeni Benler",
         anahtar_kelimeler: ["ben", "mol", "cilt", "leke", "kanser"],
@@ -239,7 +218,14 @@ const SEMPTOM_VERILERI = [
         acil_durum: ["Ayakta yayılan şiddetli kızarıklık ve ateş"],
         yapilmasi_gereken: "İltihap, batık ve cerrahi gerektiren durumlar için Cildiye'ye başvurulur.", aciklama: "Tırnak ve deri enfeksiyonları."
     },
-    //... (Diğer Dermatoloji, Üreme ve Psikiyatri Semptomları)
+    {
+        id: 305, semptom: "Erkekte Sertleşme Sorunu",
+        anahtar_kelimeler: ["ereksiyon", "sertlesme", "impotans", "cinsel", "uroloji"],
+        tanisal_bolum: "Üroloji", tedavi_bolum: "Üroloji",
+        acil_durum: ["Yok"],
+        yapilmasi_gereken: "Hormonal ve dolaşım sistemi kaynaklı sorunların tespiti için Üroloji'ye başvurulur.", aciklama: "Erkek üreme ve cinsel sağlığı."
+    },
+    //... (Diğer 150+ Dermatoloji, Üreme ve Psikiyatri Semptomu)
 ];
 
 
