@@ -3,57 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzman Hangi̇si? - Sevk Zinciri Robotu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Uzman Hangi̇si? | Tıbbi Protokol Yönlendiricisi</title>
     <style>
-        body { background-color: #f8f9fa; }
-        .container { max-width: 800px; margin-top: 50px; }
+        :root {
+            --primary-color: #007bff; /* Mavi */
+            --danger-color: #dc3545; /* Kırmızı */
+            --bg-light: #f4f6f8;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 2.5rem;
+        }
+
+        /* Arama ve Liste Stilleri */
+        #arama_input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ccc;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: border-color 0.3s;
+        }
+
+        #arama_input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .list-group {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .list-group-item {
+            padding: 12px 20px;
+            border: none;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-group-item:hover {
+            background-color: #eaf1fb;
+            cursor: pointer;
+            transform: translateY(-1px);
+        }
+
+        /* Detay Kartı Stilleri */
+        #detay_karti {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin-top: 30px;
+        }
+
         .acil-uyari {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            padding: 15px;
-            margin-bottom: 20px;
+            background-color: #fcebeb;
+            border-left: 5px solid var(--danger-color);
+            color: #491217;
+            padding: 20px;
+            margin-bottom: 30px;
             border-radius: 5px;
         }
-        .protokol-asamalari .bolum-adi {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #007bff;
-            margin-top: 5px;
+
+        .acil-uyari h4 {
+            color: var(--danger-color);
+            margin-top: 0;
+            font-weight: 600;
         }
-        .list-group-item:hover {
-            cursor: pointer;
-            background-color: #e9ecef;
+
+        .protokol-asamalari h4 {
+            color: #333;
+            font-weight: 600;
+            margin-top: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
         }
-        #detay_karti {
-            min-height: 250px;
-            padding: 20px;
-            background-color: white;
+
+        .asama-tani .bolum-adi {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        .asama-tedavi .bolum-adi {
+            font-size: 1.3rem;
+            color: #28a745; /* Yeşil renk */
+            margin: 10px 0;
+        }
+
+        .aciklama-detay {
+            background-color: #f7f9fc;
+            padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px dashed #ddd;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 class="text-center mb-4 text-primary">Uzman Hangi̇si? 🩺</h1>
-    <p class="text-center text-muted">Ağrınızı veya sorununuzu yazın, TANI ve TEDAVİ protokolünü görün.</p>
+    <header>
+        <h1>Uzman Hangi̇si? 🩺 Protokol Yönlendiricisi</h1>
+        <p class="text-secondary">Tıbbi Sevk Zinciri Robotu: Doğru uzmanı bulun, zaman kaybetmeyin.</p>
+    </header>
 
     <div class="input-group mb-3">
-        <input type="text" class="form-control form-control-lg" id="arama_input" placeholder="Örn: Bel Ağrısı, Baş Ağrısı, Mide Yanması..." onkeyup="aramaYap()">
+        <input type="text" class="form-control" id="arama_input" placeholder="Ağrınızı veya semptomu yazın (Örn: Kulak Çınlaması, Cilt Kaşıntısı...)" onkeyup="aramaYap()">
     </div>
     
     <ul class="list-group mb-4" id="sonuclar_listesi">
         </ul>
     
     <div id="detay_karti">
-        <p class="text-center text-secondary mt-5">Lütfen aramak istediğiniz semptomu yazın.</p>
+        <p class="text-center text-secondary mt-5">Sorununuzu yukarıdaki arama kutusuna yazmaya başlayın.</p>
     </div>
 
-    <footer class="text-center mt-5 text-muted">
-        ⚠️ Bu bir teşhis aracı DEĞİLDİR. Sadece Sağlık Bakanlığı protokollerine uygun yönlendirme yapar. Net tanı için her zaman doktora başvurunuz.
+    <footer class="text-center">
+        ⚠️ YASAL UYARI: Bu bir teşhis aracı DEĞİLDİR. Sadece en yaygın protokol ve sevk zincirini gösterir. Mutlak tanı için hekime başvurunuz.
     </footer>
 </div>
 
