@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semptom Protokol Rehberi | Tıbbi Yönlendirme Sistemi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #5F6CAF; /* Yumuşak Lacivert/Mor Tonu */
-            --primary-light: #7a8bcc;
-            --accent-color: #4CAF50; /* Canlı Yeşil/Teal Vurgusu */
-            --background-light: #f8f9fa; /* Hafif Gri Arka Plan */
-            --card-background: #ffffff; /* Beyaz Kart Arka Planı */
-            --text-dark: #343a40; /* Koyu Gri Metin */
-            --text-muted: #6c757d; /* Açık Gri Metin */
-            --danger-color: #EF5350; /* Acil durum için kırmızı */
-            --font-header: 'Quicksand', sans-serif;
-            --font-body: 'Open Sans', sans-serif;
-            --shadow-light: 0 6px 15px rgba(0, 0, 0, 0.08);
-            --shadow-medium: 0 12px 30px rgba(0, 0, 0, 0.12);
-            --border-radius-soft: 12px;
+            --primary-color: #6a1b9a; /* Derin Mor (Göz Alıcı) */
+            --primary-light: #ab47bc;
+            --accent-color: #ffb300; /* Canlı Sarı/Turuncu (Vurgu) */
+            --background-light: #f3f5f9; /* Hafif Gök Mavisi/Gri Arka Plan */
+            --card-background: #ffffff; 
+            --text-dark: #263238; 
+            --danger-color: #e53935; /* Acil durum için koyu kırmızı */
+            --font-header: 'Baloo 2', cursive;
+            --font-body: 'Inter', sans-serif;
+            --shadow-focus: 0 0 0 0.4rem rgba(106, 27, 154, 0.25);
+            --shadow-lift: 0 15px 35px rgba(0, 0, 0, 0.15);
+            --border-radius-soft: 18px;
         }
 
         body {
@@ -32,13 +31,13 @@
             color: var(--text-dark);
         }
         
-        /* --- HEADER STYLES --- */
+        /* --- HEADER (HERO SECTION) STYLES --- */
         .header-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
             color: white;
-            padding: 3.5rem 0 4.5rem; /* Ferah bir alan */
+            padding: 4rem 0 7rem; /* Arama kutusuna yer açmak için */
             margin-bottom: 25px;
-            box-shadow: var(--shadow-medium);
+            box-shadow: var(--shadow-lift);
             border-bottom-left-radius: var(--border-radius-soft);
             border-bottom-right-radius: var(--border-radius-soft);
             position: relative; 
@@ -47,100 +46,109 @@
         
         .header-section h1 {
             font-family: var(--font-header);
-            font-weight: 700;
-            letter-spacing: 0.8px;
-            margin-bottom: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
         }
 
-        /* --- SEARCH STYLES --- */
+        /* --- ARACI ARAMA KUTUSU VE CONTAINER --- */
         .search-container {
             position: relative;
-            margin-top: 2.5rem;
+            margin-top: -4rem; /* Hero alanının içine girmesi için */
+            z-index: 10; /* Her şeyin üzerinde kalması için */
+        }
+        
+        .search-wrapper {
+            background-color: var(--card-background);
+            border-radius: 40px; /* Ekstra yuvarlaklık */
+            padding: 8px; /* Inputu sarmalamak için padding */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); /* Derin gölge */
+            transition: transform 0.3s ease;
+        }
+        
+        .search-wrapper:hover {
+            transform: translateY(-5px);
         }
 
         #arama_input {
-            border-radius: 30px; /* Daha yumuşak yuvarlaklık */
+            border-radius: 30px; 
             padding: 16px 25px; 
-            border: 1px solid #ddd;
-            box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
-            font-size: 1.05rem;
+            border: none; /* Wrapper'da sınır olduğu için inputta sildik */
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--text-dark);
         }
         
-        #arama_input::placeholder {
-            color: var(--text-muted);
-            opacity: 0.8;
-        }
-        
         #arama_input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(95, 108, 175, 0.15); /* Primary renginin şeffaf tonu */
+            box-shadow: none; /* Bootstrap odak efekti yerine kendi CSS Shadow'umuzu kullanacağız */
         }
         
+        /* Arama İkonu Butonu */
         .input-group-text {
-            background-color: var(--card-background);
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            border-radius: 0 30px 30px 0 !important;
-            padding-right: 20px;
-            color: var(--primary-color);
+            border-radius: 30px; 
+            margin: 0 5px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
         }
         
+        .input-group-text:hover {
+            background-color: var(--primary-light);
+        }
+        
+        /* --- SONUÇ LİSTESİ --- */
         #sonuclar_listesi {
             list-style: none;
             padding: 0;
-            margin-top: 4px;
-            max-height: 280px;
+            margin-top: 10px;
+            max-height: 300px;
             overflow-y: auto;
-            border-radius: var(--border-radius-soft);
+            border-radius: 12px;
             box-shadow: var(--shadow-medium);
             position: absolute;
             width: 100%;
-            z-index: 10;
+            z-index: 15;
             background-color: var(--card-background);
             border: 1px solid #e0e0e0;
         }
 
         #sonuclar_listesi .list-group-item {
             cursor: pointer;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border: none;
             border-bottom: 1px solid #f0f0f0;
             transition: background-color 0.2s;
-            font-size: 0.95rem;
-            color: var(--text-dark);
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         #sonuclar_listesi .list-group-item:hover {
-            background-color: #e6e8f4; /* Primary renginden açık bir ton */
+            background-color: #f3e5f5; /* Hafif Mor Vurgu */
         }
         
         /* --- DETAY CARD STYLES --- */
         #detay_karti {
             background-color: var(--card-background);
             border-radius: var(--border-radius-soft);
-            box-shadow: var(--shadow-medium);
-            padding: 35px 45px;
-            margin-top: 3rem;
-            min-height: 480px;
+            box-shadow: var(--shadow-lift);
+            padding: 40px 50px;
+            margin-top: 5rem; 
+            min-height: 500px;
             animation: fadeIn 0.6s ease-out;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Acil Uyarı Alanı (Daha Küçük, Not Benzeri) */
+        /* Acil Uyarı Alanı (Mini Not) */
         .acil-uyari-mini {
-            background-color: #fff3f3; /* Açık kırmızı arka plan */
+            background-color: #ffebee; 
             border-left: 5px solid var(--danger-color);
             padding: 15px 20px;
             border-radius: var(--border-radius-soft);
             margin-bottom: 30px;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             font-size: 0.95rem;
         }
         
@@ -152,118 +160,81 @@
         
         .acil-uyari-mini strong {
             color: var(--danger-color);
-            font-weight: 600;
-        }
-        
-        .acil-uyari-mini p {
-            margin: 0;
-            color: var(--text-dark);
-            line-height: 1.4;
-        }
-
-        .acil-uyari-mini span { /* Acil durum içindeki semptom vurgusu */
-            font-weight: 500;
-            color: #d32f2f; 
+            font-weight: 700;
         }
         
         /* Protokol Aşamaları */
         .asama {
-            padding: 22px;
-            border-radius: var(--border-radius-soft);
-            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border: 1px solid #e0e0e0; /* Hafif sınır */
+            border: 1px solid #e0e0e0; 
         }
         
         .asama:hover {
-             transform: translateY(-5px);
-             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+             transform: translateY(-3px);
+             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         .asama-tani {
-            background-color: #e8f5e9; /* Çok açık yeşil */
+            background-color: #f1f8e9; /* Pastel Yeşil */
         }
         
         .asama-tedavi {
-            background-color: #e3f2fd; /* Çok açık mavi */
+            background-color: #fff3e0; /* Pastel Turuncu */
         }
         
         .asama h4 {
             font-family: var(--font-header);
             font-weight: 700;
             color: var(--primary-color);
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
         }
         
         .asama-tedavi h4 {
-            color: #1976d2; /* Tedavi için farklı bir mavi tonu */
+            color: var(--accent-color); 
         }
 
-        .asama h4 .fa-icon {
-            font-size: 1.3rem;
-            margin-right: 10px;
-        }
-        
         .bolum-adi {
-            font-size: 1.9rem;
-            font-weight: 700;
+            font-size: 2.1rem;
+            font-weight: 800;
             color: var(--accent-color); 
             margin-top: 8px;
             display: block;
             font-family: var(--font-header);
         }
         
-        .asama-tedavi .bolum-adi {
-            color: var(--primary-color);
+        .asama-tani .bolum-adi {
+             color: #43a047; /* Tanı için Yeşil */
         }
 
         .aciklama-detay {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            font-size: 0.95rem;
+            color: #555;
             margin-top: 15px;
             line-height: 1.6;
             border-top: 1px dashed #e0e0e0;
             padding-top: 15px;
         }
         
+        /* Placeholder Content */
         .placeholder-content {
             padding-top: 6rem;
             padding-bottom: 6rem;
-            color: var(--text-muted);
+            color: #78909c;
         }
         
         .placeholder-content i {
             color: var(--primary-color);
-            opacity: 0.7;
+            opacity: 0.8;
             margin-bottom: 1.5rem;
         }
         .placeholder-content h4 {
             color: var(--text-dark);
-            font-weight: 500;
+            font-weight: 700;
             font-family: var(--font-header);
-            line-height: 1.4;
-        }
-        .placeholder-content p {
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        footer {
-            background-color: #eceff1; /* Açık gri footer */
-            color: #78909c;
-            padding: 2.5rem 0;
-            font-size: 0.85rem;
-            margin-top: 3rem;
-            border-top-left-radius: var(--border-radius-soft);
-            border-top-right-radius: var(--border-radius-soft);
-        }
-        footer hr {
-            border-color: #cfd8dc;
-            width: 40%;
-            margin: 1.5rem auto;
         }
     </style>
 </head>
@@ -271,58 +242,56 @@
 
     <header class="header-section">
         <div class="container text-center">
-            <h1><i class="fas fa-stethoscope me-2"></i>Semptom Protokol Rehberi</h1>
-            <p class="lead text-white-75">Hızlı ve kullanıcı dostu sağlık yönlendirme sistemi.</p>
-            
-            <div class="row justify-content-center">
-                <div class="col-md-9 col-lg-7">
-                    <div class="search-container">
-                        <div class="input-group">
-                            <input 
-                                type="text" 
-                                id="arama_input" 
-                                class="form-control" 
-                                placeholder="Şikayetinizi buraya yazın: Örn: Karın ağrısı, Halsizlik..." 
-                                onkeyup="aramaYap()" 
-                                autocomplete="off">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <ul id="sonuclar_listesi" class="list-group" style="display: none;">
-                            </ul>
-                    </div>
-                </div>
-            </div>
+            <h1><i class="fas fa-microscope me-2"></i>Semptom Protokol Rehberi</h1>
+            <p class="lead text-white-75">Hangi şikayet için hangi uzmana başvurmalısınız? Saniyeler içinde öğrenin.</p>
         </div>
     </header>
 
     <div class="container pb-5">
         <div class="row justify-content-center">
+            
+            <div class="col-md-10 col-lg-8">
+                <div class="search-container">
+                    <div class="input-group search-wrapper">
+                        <input 
+                            type="text" 
+                            id="arama_input" 
+                            class="form-control" 
+                            placeholder="Şikayetinizi buraya yazın: Örn: Yüksek ateş, Bel fıtığı, Gözde uçuşma..." 
+                            onkeyup="aramaYap()" 
+                            autocomplete="off">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <ul id="sonuclar_listesi" class="list-group" style="display: none;">
+                        </ul>
+                </div>
+            </div>
+            
             <div class="col-lg-10">
                 <div id="detay_karti" class="card">
                     <div class="placeholder-content text-center">
                         <i class="fas fa-notes-medical fa-4x mb-4"></i>
-                        <h4 class="mb-2">Bir semptom aramaya başlayın, <br>doğru yönlendirmeyi alın.</h4>
+                        <h4 class="mb-2">Doğru Yönlendirme İçin Aramaya Başlayın.</h4>
                         <p class="mt-3">
-                            <i class="fas fa-lightbulb me-1"></i>Bu araç bilgilendirme amaçlıdır. Asla bir doktor muayenesinin yerini tutmaz.
+                            <i class="fas fa-hand-point-up me-1"></i>Lütfen unutmayın, bu araç sadece bir rehberdir. Tıbbi teşhis ve tedavi için daima hekime başvurunuz.
                         </p>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="container text-center">
-            <hr>
-            <p class="mb-0"><i class="fas fa-copyright me-1"></i> 2024 Semptom Protokol Rehberi.</p>
-            <small class="d-block mt-1">Sağlığınız için daima bir uzmana danışın.</small>
+    <footer class="text-center text-muted py-4">
+        <div class="container">
+            <p class="mb-0"><i class="fas fa-copyright me-1"></i> 2024 Semptom Protokol Rehberi. | Dinamik Arayüz Tasarımı</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script> 
     
     <script>
+        // Arama kutusu dışına tıklayınca sonuç listesini kapatma işlevi
         document.addEventListener('click', function(event) {
             const searchContainer = document.querySelector('.search-container');
             const resultsList = document.getElementById('sonuclar_listesi');
@@ -332,8 +301,7 @@
             }
         });
         
-        // app.js dosyanızdaki "detaylariGoster" fonksiyonunun arayüzü doldurması için
-        // HTML yapısını ve CSS sınıflarını buna göre güncelledim.
+        // Arayüzü güncelleyen ana fonksiyon
         function detaylariGoster(id) {
             const veri = SEMPTOM_VERILERI.find(d => d.id === id);
             const detayKarti = document.getElementById('detay_karti');
@@ -349,8 +317,8 @@
                 </div>` : '';
                 
             detayKarti.innerHTML = `
-                <h3 class="card-title text-center mb-5" style="color: var(--text-dark); font-family: var(--font-header); font-weight: 700;">
-                    <i class="fas fa-notes-medical me-2 text-muted"></i> ${veri.semptom} İçin Yönlendirme Protokolü
+                <h3 class="card-title text-center mb-5" style="color: var(--text-dark); font-family: var(--font-header); font-weight: 800;">
+                    <i class="fas fa-clipboard-list me-2 text-muted"></i> ${veri.semptom} İçin Yönlendirme Protokolü
                 </h3>
                 
                 ${acilUyari}
@@ -358,7 +326,7 @@
                 <div class="protokol-asamalari row">
                     <div class="col-md-6">
                         <div class="asama asama-tani">
-                            <h4><i class="fas fa-search-dollar fa-icon me-2"></i>Öncelikli Tanı ve Değerlendirme Bölümü</h4>
+                            <h4><i class="fas fa-search me-2"></i>Öncelikli Tanı ve Değerlendirme Bölümü</h4>
                             <span class="bolum-adi">${veri.tanisal_bolum}</span>
                             <p class="aciklama-detay">
                                 <strong>Açıklama:</strong> ${veri.aciklama}
@@ -368,7 +336,7 @@
                     
                     <div class="col-md-6">
                         <div class="asama asama-tedavi">
-                            <h4><i class="fas fa-lightbulb fa-icon me-2"></i>Uzmanlık ve Tedavi Aşamasındaki Bölüm</h4>
+                            <h4><i class="fas fa-pills me-2"></i>Uzmanlık ve Tedavi Aşamasındaki Bölüm</h4>
                             <span class="bolum-adi">${veri.tedavi_bolum}</span>
                             <p class="aciklama-detay">
                                 <strong>Yapılması Gereken/Öneri:</strong> ${veri.yapilmasi_gereken}
@@ -381,17 +349,17 @@
             document.getElementById('detay_karti').scrollIntoView({ behavior: 'smooth' });
         }
         
+        // Bu kod, app.js dosyanızdaki SEMPTOM_VERILERI'nin mevcut olduğunu varsayar.
         document.addEventListener('DOMContentLoaded', () => {
-            // app.js yüklendikten sonra semptom verilerinin mevcut olduğunu varsayalım.
-            // Placeholder içeriğini başlangıçta göstermek için.
+            // Başlangıçta placeholder içeriğini göster.
             const detayKarti = document.getElementById('detay_karti');
             if (detayKarti.innerHTML.trim() === '' || detayKarti.children.length === 0) {
                  detayKarti.innerHTML = `
                     <div class="placeholder-content text-center">
                         <i class="fas fa-notes-medical fa-4x mb-4"></i>
-                        <h4 class="mb-2">Bir semptom aramaya başlayın, <br>doğru yönlendirmeyi alın.</h4>
+                        <h4 class="mb-2">Doğru Yönlendirme İçin Aramaya Başlayın.</h4>
                         <p class="mt-3">
-                            <i class="fas fa-lightbulb me-1"></i>Bu araç bilgilendirme amaçlıdır. Asla bir doktor muayenesinin yerini tutmaz.
+                            <i class="fas fa-hand-point-up me-1"></i>Lütfen unutmayın, bu araç sadece bir rehberdir. Tıbbi teşhis ve tedavi için daima hekime başvurunuz.
                         </p>
                     </div>
                 `;
