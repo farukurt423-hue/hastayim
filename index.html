@@ -4,36 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semptom Protokol Rehberi | Tıbbi Yönlendirme Sistemi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #007bff; /* Temel Mavi (Güven ve profesyonellik) */
-            --primary-light: #4c99ff;
-            --secondary-color: #f0f4f8; /* Açık Gri/Beyaz (Ferah arka plan) */
-            --accent-color: #ff9800; /* Turuncu (Vurgu ve acil durum ikonu) */
-            --danger-color: #dc3545; /* Acil metin için kırmızı */
-            --font-family: 'Poppins', 'Lato', sans-serif;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --border-radius-large: 20px;
+            --primary-color: #00897b; /* Huzur Veren Teal/Camgöbeği */
+            --primary-dark: #005f56; /* Koyu Teal */
+            --secondary-color: #f5f8fa; /* Çok Açık Mavi/Gri Arka Plan */
+            --accent-color: #ef5350; /* Kırmızı (Acil Durum) */
+            --text-color: #37474f; /* Koyu Lacivert/Gri Metin */
+            --font-header: 'Montserrat', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --card-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            --border-radius-large: 16px;
         }
 
         body {
-            font-family: var(--font-family);
+            font-family: var(--font-body);
             background-color: var(--secondary-color);
             min-height: 100vh;
-            color: #333;
+            color: var(--text-color);
         }
         
         /* --- HEADER STYLES --- */
         .header-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #4db6ac 100%);
             color: white;
-            padding: 3rem 0 4rem; 
-            margin-bottom: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            padding: 4rem 0; /* Daha ferah */
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             border-bottom-left-radius: var(--border-radius-large);
             border-bottom-right-radius: var(--border-radius-large);
             position: relative; 
@@ -41,58 +43,65 @@
         }
         
         .header-section h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-family: var(--font-header);
+            font-weight: 800;
+            letter-spacing: 1px;
             margin-bottom: 0.5rem;
         }
 
         /* --- SEARCH STYLES --- */
         .search-container {
             position: relative;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         #arama_input {
             border-radius: 50px;
             padding: 18px 30px; 
-            border: none;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border: 2px solid #ddd;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             font-size: 1.1rem;
         }
         
         #arama_input:focus {
-            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 137, 123, 0.15);
+        }
+        
+        /* Arama İkonu Temizliği */
+        .input-group-text {
+            background-color: white;
+            border: none;
+            color: var(--primary-color);
         }
         
         #sonuclar_listesi {
             list-style: none;
             padding: 0;
-            margin-top: 5px;
-            max-height: 350px;
+            margin-top: 4px;
+            max-height: 300px;
             overflow-y: auto;
-            border-radius: 15px;
+            border-radius: 12px;
             box-shadow: var(--card-shadow);
             position: absolute;
             width: 100%;
             z-index: 10;
             background-color: white;
-            border: 1px solid #eee;
+            border: 1px solid #e0e0e0;
         }
 
         #sonuclar_listesi .list-group-item {
             cursor: pointer;
-            padding: 15px 25px;
+            padding: 14px 20px;
             border: none;
             border-bottom: 1px solid #f1f1f1;
-            transition: background-color 0.2s, transform 0.1s;
-            font-size: 1.05rem;
+            transition: background-color 0.2s;
+            font-size: 1rem;
         }
 
         #sonuclar_listesi .list-group-item:hover {
-            background-color: #e6f0ff; 
-            transform: translateX(3px);
+            background-color: #e0f2f1; /* Açık Teal vurgu */
         }
         
         /* --- DETAY CARD STYLES --- */
@@ -100,106 +109,100 @@
             background-color: white;
             border-radius: var(--border-radius-large);
             box-shadow: var(--card-shadow);
-            padding: 40px;
+            padding: 40px 50px;
             margin-top: 3rem;
-            min-height: 400px;
+            min-height: 450px;
+            animation: fadeIn 0.6s ease-out;
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Acil Uyarı Alanı */
         .acil-uyari {
-            background-color: #fff3cd; 
-            border: 1px solid #ffeeba;
+            background-color: #ffebee; /* Çok açık kırmızı tonu */
+            border: 1px solid #ffcdd2;
             border-left: 6px solid var(--accent-color);
             padding: 20px;
             border-radius: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             display: flex;
             align-items: flex-start;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            font-family: 'Lato', sans-serif;
         }
         
         .acil-uyari .icon {
-            font-size: 2.2rem;
-            color: var(--danger-color); /* Kırmızı yapalım */
-            margin-right: 15px;
+            font-size: 2.5rem;
+            color: var(--accent-color); 
+            margin-right: 20px;
         }
         
         .acil-uyari strong {
-            color: var(--danger-color);
+            color: var(--accent-color);
             font-weight: 700;
         }
         
-        .acil-uyari p {
-            margin: 0;
-            line-height: 1.5;
-            color: #333;
-        }
-
         .acil-uyari span {
-            font-weight: 600;
-            color: #b15b00; /* Vurgulanan semptomlar için koyu turuncu */
+            font-weight: 500;
+            color: #b71c1c; /* Daha belirgin acil durum metni */
         }
         
         /* Protokol Aşamaları */
-        .asama {
+        .asama-tani, .asama-tedavi {
             padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid #eee;
+            transition: transform 0.2s;
         }
         
+        .asama-tani:hover, .asama-tedavi:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
         .asama-tani {
-            background-color: #eef4ff; /* Açık Mavi */
-            border-left: 5px solid var(--primary-color);
+            background-color: #e0f2f1; /* Açık Teal */
         }
         
         .asama-tedavi {
-            background-color: #e6ffec; /* Açık Yeşil */
-            border-left: 5px solid #28a745;
+            background-color: #fbe9e7; /* Açık Şeftali (Vurgu) */
         }
         
         .asama h4 {
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
+            font-family: var(--font-header);
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
         }
         
-        .asama-tani h4:before { content: "🔬"; margin-right: 8px; font-size: 1.2rem; }
-        .asama-tedavi h4:before { content: "🩺"; margin-right: 8px; font-size: 1.2rem; }
+        .asama-tedavi h4 {
+            color: #d84315; /* Koyu Turuncu/Kırmızı */
+        }
 
         .bolum-adi {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--primary-color); 
-            margin-top: 5px;
+            margin-top: 8px;
             display: block;
         }
         
         .asama-tedavi .bolum-adi {
-            color: #28a745; /* Yeşil ton */
+            color: #ef5350; /* Kırmızı/Accent rengi */
         }
 
         .aciklama-detay {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #555;
-            margin-top: 10px;
+            margin-top: 15px;
             line-height: 1.6;
-            border-top: 1px dashed #ddd;
-            padding-top: 10px;
+            border-top: 1px dashed #b2dfdb; /* İnce, zarif çizgi */
+            padding-top: 15px;
         }
         
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #cfd8dc;
-            margin: 30px 0;
-        }
-
-        /* Placeholder Content Styling */
         .placeholder-content {
             padding-top: 5rem;
             padding-bottom: 5rem;
@@ -207,11 +210,12 @@
         
         .placeholder-content i {
             color: var(--primary-color);
-            opacity: 0.7;
+            opacity: 0.8;
         }
         .placeholder-content h4 {
-            color: #6c757d;
-            font-weight: 400;
+            color: var(--text-color);
+            font-weight: 500;
+            font-family: var(--font-header);
         }
     </style>
 </head>
@@ -219,8 +223,8 @@
 
     <header class="header-section">
         <div class="container text-center">
-            <h1><i class="fas fa-hand-holding-medical me-2"></i>Semptom Protokol Rehberi</h1>
-            <p class="lead text-white-50">450'den fazla şikayet için hızlı tıbbi yönlendirme kılavuzu.</p>
+            <h1><i class="fas fa-kit-medical me-2"></i>Semptom Protokol Rehberi</h1>
+            <p class="lead text-white-75">450+ şikayet için hızlı ve güvenilir tıbbi yönlendirme kılavuzu.</p>
             
             <div class="row justify-content-center">
                 <div class="col-md-9 col-lg-7">
@@ -230,10 +234,10 @@
                                 type="text" 
                                 id="arama_input" 
                                 class="form-control form-control-lg" 
-                                placeholder="Örn: Bel fıtığı, Gözde uçuşma, Ani kilo kaybı..." 
+                                placeholder="Şikayetinizi buraya yazın: Örn: Yüksek ateş, Bel fıtığı..." 
                                 onkeyup="aramaYap()" 
                                 autocomplete="off">
-                            <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
                         </div>
                         <ul id="sonuclar_listesi" class="list-group" style="display: none;">
                             </ul>
@@ -248,10 +252,10 @@
             <div class="col-lg-10">
                 <div id="detay_karti" class="card">
                     <div class="placeholder-content text-center">
-                        <i class="fas fa-search me-2 fa-3x mb-3"></i>
-                        <h4 class="mb-2">Sorununuzu yukarıdaki **arama kutusuna** yazmaya başlayın.</h4>
+                        <i class="fas fa-search-plus me-2 fa-4x mb-4"></i>
+                        <h4 class="mb-2">Bir Semptom Arayın, Doğru Uzmanı Bulun.</h4>
                         <p class="text-secondary mt-3">
-                            <i class="fas fa-info-circle me-1"></i>Bu araç bir **tıbbi teşhis** yerine geçmez. Doğru tanı ve tedavi için daima bir hekime başvurunuz.
+                            <i class="fas fa-hand-point-up me-1"></i>Lütfen unutmayın, bu araç bir **tıbbi teşhis** yerine geçmez. Doğru tanı ve tedavi için daima yetkili bir hekime başvurunuz.
                         </p>
                     </div>
                     </div>
@@ -259,24 +263,98 @@
         </div>
     </div>
 
-    <footer class="text-center text-secondary py-4">
+    <footer class="text-center text-muted py-4">
         <div class="container">
-            <p class="mb-0"><i class="fas fa-copyright me-1"></i> 2024 Semptom Protokol Rehberi.</p>
-            <small>Veriler, genel tıbbi protokoller baz alınarak hazırlanmıştır.</small>
+            <hr class="w-50 mx-auto">
+            <p class="mb-0"><i class="fas fa-copyright me-1"></i> 2024 Semptom Protokol Rehberi. | Sağlıkta Bilinçli Yönlendirme</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="app.js"></script> <script>
+    <script src="app.js"></script> 
+    
+    <script>
         // Arama kutusu dışına tıklayınca sonuç listesini kapatma işlevi
         document.addEventListener('click', function(event) {
             const searchContainer = document.querySelector('.search-container');
             const resultsList = document.getElementById('sonuclar_listesi');
             
+            // Eğer tıklanan yer arama alanının dışıysa, sonuç listesini gizle.
             if (!searchContainer.contains(event.target)) {
                 resultsList.style.display = 'none';
             }
         });
+        
+        // Bu, app.js dosyanızdaki "detaylariGoster" fonksiyonunun çalışmasını taklit eder.
+        // Amaç, arayüzün yeni stiliyle nasıl görüneceğini göstermektir.
+        
+        function detaylariGoster(id) {
+            const veri = SEMPTOM_VERILERI.find(d => d.id === id);
+            const detayKarti = document.getElementById('detay_karti');
+            document.getElementById('sonuclar_listesi').style.display = 'none';
+
+            // JS kodunuzdaki gibi acil durum listesini formatlayın.
+            const acilListe = veri.acil_durum.map(item => `<span>${item}</span>`).join(' • ');
+            const acilUyari = veri.acil_durum.length > 0 ? 
+                `<div class="acil-uyari">
+                    <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div>
+                        <strong>ACİL DURUM UYARISI:</strong> 
+                        Eğer: ${acilListe} durumlarından biri varsa, vakit kaybetmeyin, 112'yi arayın veya **HEMEN ACİL SERVİS**'e gidin!
+                    </div>
+                </div>` : '';
+                
+            detayKarti.innerHTML = `
+                <h3 class="card-title text-center mb-5" style="color: var(--primary-dark); font-family: var(--font-header); font-weight: 700;">
+                    ${veri.semptom} İçin Tıbbi Yönlendirme Protokolü
+                </h3>
+                
+                ${acilUyari}
+                
+                <div class="protokol-asamalari row">
+                    <div class="col-md-6">
+                        <div class="asama asama-tani">
+                            <h4><i class="fas fa-magnifying-glass-chart me-2"></i>Öncelikli Tanı ve Değerlendirme Bölümü</h4>
+                            <span class="bolum-adi">${veri.tanisal_bolum}</span>
+                            <p class="aciklama-detay">
+                                <strong>Açıklama:</strong> ${veri.aciklama}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="asama asama-tedavi">
+                            <h4><i class="fas fa-user-doctor me-2"></i>Uzmanlık ve Tedavi Aşamasındaki Bölüm</h4>
+                            <span class="bolum-adi">${veri.tedavi_bolum}</span>
+                            <p class="aciklama-detay">
+                                <strong>Yapılması Gereken/Öneri:</strong> ${veri.yapilmasi_gereken}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            // Arama kutusunu seçilen semptom ile doldur
+            document.getElementById('arama_input').value = veri.semptom;
+            // Detay kartına kaydır
+            document.getElementById('detay_karti').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Başlangıçta placeholder'ı göstermek için, detay kartını temizle ve placeholder'ı tekrar yükle (app.js'te tanımlı olduğu varsayılır)
+        document.addEventListener('DOMContentLoaded', () => {
+            const detayKarti = document.getElementById('detay_karti');
+            if (detayKarti.innerHTML === '') {
+                detayKarti.innerHTML = `
+                    <div class="placeholder-content text-center">
+                        <i class="fas fa-search-plus me-2 fa-4x mb-4"></i>
+                        <h4 class="mb-2">Bir Semptom Arayın, Doğru Uzmanı Bulun.</h4>
+                        <p class="text-secondary mt-3">
+                            <i class="fas fa-hand-point-up me-1"></i>Lütfen unutmayın, bu araç bir **tıbbi teşhis** yerine geçmez. Doğru tanı ve tedavi için daima yetkili bir hekime başvurunuz.
+                        </p>
+                    </div>
+                `;
+            }
+        });
+        
     </script>
 </body>
 </html>
