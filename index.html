@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzman Hangi̇si? | Keyifli Protokol Rehberi</title>
+    <title>Uzman Hangi̇si? | Tıbbi Protokol Merkezi</title>
     
     <style>
         :root {
-            --primary-color: #38bdf8; /* Yumuşak Gök Mavisi */
-            --secondary-color: #64748b; /* Soğuk Gri */
-            --accent-color: #fdbf23; /* Canlı Sarı/Turuncu */
-            --bg-light: #fefefe; /* Çok Açık Arka Plan */
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --soft-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --primary-color: #1a73e8; /* Google'ın Mavisi */
+            --secondary-color: #333;
+            --accent-color: #fa7200; /* Dikkat çekici Turuncu */
+            --bg-light: #f7f9fc; /* Hafif Gri Arka Plan */
+            --font-family: 'Roboto', 'Arial', sans-serif;
+            --strong-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
 
         body {
@@ -21,52 +21,49 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            color: #333;
+            color: var(--secondary-color);
         }
 
         .container {
             max-width: 900px;
-            margin: 50px auto;
+            margin: 40px auto;
             padding: 20px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-            border-radius: 25px;
-            box-shadow: var(--soft-shadow);
+            margin-bottom: 30px;
         }
 
         header h1 {
             color: var(--primary-color);
-            font-weight: 800;
-            font-size: 2.8rem;
-            letter-spacing: -1px;
+            font-weight: 700;
+            font-size: 2.5rem;
+            border-bottom: 3px solid #eee;
+            padding-bottom: 10px;
         }
 
         /* Arama ve Liste Stilleri */
         #arama_input {
             width: 100%;
-            padding: 18px 25px;
-            border: 1px solid #e0e0e0;
-            border-radius: 30px;
+            padding: 18px 20px;
+            border: 1px solid #c5c5c5;
+            border-radius: 8px; /* Daha az yuvarlak */
             font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: border-color 0.3s;
+            box-shadow: var(--strong-shadow);
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         #arama_input:focus {
             border-color: var(--primary-color);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.3);
         }
 
         .list-group {
-            border: none;
-            border-radius: 15px;
-            box-shadow: var(--soft-shadow);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: var(--strong-shadow);
             max-height: 350px;
             overflow-y: auto;
             background-color: white;
@@ -76,14 +73,14 @@
         }
 
         .list-group-item {
-            padding: 15px 25px;
+            padding: 15px 20px;
             border: none;
             border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.2s, color 0.2s;
+            transition: background-color 0.2s;
         }
 
         .list-group-item:hover {
-            background-color: #f0f8ff;
+            background-color: #e8f0fe;
             color: var(--primary-color);
             cursor: pointer;
         }
@@ -91,79 +88,71 @@
         /* Detay Kartı Stilleri */
         #detay_karti {
             background-color: white;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: var(--soft-shadow);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: var(--strong-shadow);
             margin-top: 30px;
+            border-top: 5px solid var(--primary-color); /* Vurgu çizgisi */
         }
 
-        /* YUMUŞAK ACİL UYARI STİLİ */
+        /* ACİL UYARI STİLİ */
         .acil-uyari {
-            background-color: #fffbeb; 
-            border: 1px solid #fcd34d;
-            color: #78350f;
-            padding: 20px;
+            background-color: #fff3cd; 
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 15px 20px;
             margin-bottom: 30px;
-            border-radius: 15px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
         }
 
         .acil-uyari .icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--accent-color);
             margin-right: 15px;
         }
 
-        .acil-uyari p {
-            margin: 0;
-            font-weight: 500;
-            line-height: 1.5;
-        }
-        
         .acil-uyari strong {
             font-weight: 700;
-            color: #dc2626; /* Kırmızı, dikkat çekmesi için */
+            color: var(--danger-color);
         }
-
+        
         /* Protokol Adımları */
         .protokol-asamalari h4 {
             color: var(--secondary-color);
             font-weight: 600;
-            margin-top: 35px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-            font-size: 1.3rem;
+            margin-top: 30px;
+            padding-bottom: 5px;
+            font-size: 1.2rem;
         }
 
         .asama-tani .bolum-adi {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .asama-tedavi .bolum-adi {
-            font-size: 1.6rem;
-            color: #10b981; /* Yeşil */
+            font-size: 1.4rem;
+            color: #1b8e4e; /* Yeşil */
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .aciklama-detay {
-            background-color: #f7f9fc;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid #e0f2fe;
-            margin-top: 15px;
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 5px solid #d2e3f9;
+            margin-top: 10px;
         }
         
         footer {
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: #94a3b8;
-            border-top: 1px solid #f0f0f0;
-            padding-top: 20px;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #777;
         }
     </style>
 </head>
@@ -171,12 +160,12 @@
 
 <div class="container">
     <header>
-        <h1>Uzman Hangi̇si? 🍀 Protokol Rehberi</h1>
-        <p class="text-secondary">Semptomunuzu yazın, doğru uzmana gidin, zamanınızı verimli kullanın.</p>
+        <h1>Uzman Hangi̇si? 📋 Tıbbi Protokol Merkezi</h1>
+        <p class="text-secondary">Tanı ve tedavi zinciri ile doğru uzmana gidin, zaman ve enerji kaybetmeyin.</p>
     </header>
 
     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="arama_input" placeholder="Ağrınızı veya semptomu yazın (Örn: Geçmeyen Bel Ağrısı, Göz Batması, Ayak Bileği Şişliği...)" onkeyup="aramaYap()">
+        <input type="text" class="form-control" id="arama_input" placeholder="Ağrınızı veya semptomu yazın (Örn: Geçmeyen Bel Ağrısı, Ayak Bileği Burkulması...)" onkeyup="aramaYap()">
     </div>
     
     <ul class="list-group mb-4" id="sonuclar_listesi">
@@ -187,7 +176,7 @@
     </div>
 
     <footer class="text-center">
-        ⚠️ YASAL UYARI: Bu bir teşhis aracı DEĞİLDİR. Sadece en yaygın sevk zincirini gösterir. Mutlak tanı için hekime başvurunuz.
+        ⚠️ YASAL UYARI: Bu bir teşhis aracı DEĞİLDİR. Sadece uzman protokollerine uygun sevk zincirini gösterir. Mutlak tanı için hekime başvurunuz.
     </footer>
 </div>
 
