@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzman Hangi̇si? - Sevk Zinciri Robotu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 800px; margin-top: 50px; }
+        .acil-uyari {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .protokol-asamalari .bolum-adi {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 5px;
+        }
+        .list-group-item:hover {
+            cursor: pointer;
+            background-color: #e9ecef;
+        }
+        #detay_karti {
+            min-height: 250px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1 class="text-center mb-4 text-primary">Uzman Hangi̇si? 🩺</h1>
+    <p class="text-center text-muted">Ağrınızı veya sorununuzu yazın, TANI ve TEDAVİ protokolünü görün.</p>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control form-control-lg" id="arama_input" placeholder="Örn: Bel Ağrısı, Baş Ağrısı, Mide Yanması..." onkeyup="aramaYap()">
+    </div>
+    
+    <ul class="list-group mb-4" id="sonuclar_listesi">
+        </ul>
+    
+    <div id="detay_karti">
+        <p class="text-center text-secondary mt-5">Lütfen aramak istediğiniz semptomu yazın.</p>
+    </div>
+
+    <footer class="text-center mt-5 text-muted">
+        ⚠️ Bu bir teşhis aracı DEĞİLDİR. Sadece Sağlık Bakanlığı protokollerine uygun yönlendirme yapar. Net tanı için her zaman doktora başvurunuz.
+    </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
