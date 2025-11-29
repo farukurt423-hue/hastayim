@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uzman Hangi̇si? | Tıbbi Protokol Yönlendiricisi</title>
+    
     <style>
         :root {
-            --primary-color: #007bff; /* Mavi */
-            --danger-color: #dc3545; /* Kırmızı */
-            --bg-light: #f4f6f8;
+            --primary-color: #008CBA; /* Kurumsal Mavi/Açık Deniz Mavisi */
+            --secondary-color: #555;
+            --warning-color: #ff9800; /* Turuncu/Ambar */
+            --bg-light: #f9f9f9;
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -18,6 +20,7 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            color: #333;
         }
 
         .container {
@@ -33,18 +36,18 @@
 
         header h1 {
             color: var(--primary-color);
-            font-weight: 600;
-            font-size: 2.5rem;
+            font-weight: 700;
+            font-size: 2.8rem;
         }
 
         /* Arama ve Liste Stilleri */
         #arama_input {
             width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #ccc;
-            border-radius: 30px;
+            padding: 18px 25px;
+            border: 1px solid #ddd;
+            border-radius: 40px;
             font-size: 1.1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: border-color 0.3s;
         }
 
@@ -55,17 +58,21 @@
 
         .list-group {
             border: none;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            max-height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            max-height: 350px;
             overflow-y: auto;
+            background-color: white;
+            z-index: 10;
+            position: absolute;
+            width: calc(100% - 40px);
         }
 
         .list-group-item {
-            padding: 12px 20px;
+            padding: 15px 25px;
             border: none;
             border-bottom: 1px solid #eee;
-            transition: background-color 0.2s, transform 0.1s;
+            transition: background-color 0.2s, color 0.2s;
         }
 
         .list-group-item:last-child {
@@ -73,66 +80,85 @@
         }
 
         .list-group-item:hover {
-            background-color: #eaf1fb;
+            background-color: #e6f7ff;
+            color: var(--primary-color);
             cursor: pointer;
-            transform: translateY(-1px);
         }
 
         /* Detay Kartı Stilleri */
         #detay_karti {
             background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin-top: 30px;
         }
 
+        /* YENİ ACİL UYARI STİLİ */
         .acil-uyari {
-            background-color: #fcebeb;
-            border-left: 5px solid var(--danger-color);
-            color: #491217;
-            padding: 20px;
+            background-color: #fff9e6; 
+            border: 1px solid #ffe0b2;
+            color: #664d03;
+            padding: 15px 20px;
             margin-bottom: 30px;
-            border-radius: 5px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
         }
 
-        .acil-uyari h4 {
+        .acil-uyari .icon {
+            font-size: 2rem;
+            color: var(--warning-color);
+            margin-right: 15px;
+        }
+
+        .acil-uyari p {
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .acil-uyari span {
+            font-weight: 700;
             color: var(--danger-color);
-            margin-top: 0;
-            font-weight: 600;
         }
 
+        /* Protokol Adımları */
         .protokol-asamalari h4 {
-            color: #333;
+            color: var(--secondary-color);
             font-weight: 600;
-            margin-top: 25px;
+            margin-top: 30px;
             border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
         }
 
         .asama-tani .bolum-adi {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
-            margin: 10px 0;
+            font-weight: 700;
         }
 
         .asama-tedavi .bolum-adi {
-            font-size: 1.3rem;
-            color: #28a745; /* Yeşil renk */
-            margin: 10px 0;
+            font-size: 1.4rem;
+            color: #28a745;
+            font-weight: 700;
         }
 
         .aciklama-detay {
             background-color: #f7f9fc;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
             border: 1px dashed #ddd;
+            margin-top: 15px;
+        }
+        
+        .aciklama-detay strong {
+            color: #333;
         }
 
         footer {
             margin-top: 40px;
-            font-size: 0.9rem;
-            color: #6c757d;
+            font-size: 0.85rem;
+            color: #999;
         }
     </style>
 </head>
@@ -141,11 +167,11 @@
 <div class="container">
     <header>
         <h1>Uzman Hangi̇si? 🩺 Protokol Yönlendiricisi</h1>
-        <p class="text-secondary">Tıbbi Sevk Zinciri Robotu: Doğru uzmanı bulun, zaman kaybetmeyin.</p>
+        <p class="text-secondary">Doğru uzmanı bulun, TANI ve TEDAVİ zincirini öğrenerek zaman kaybetmeyin.</p>
     </header>
 
     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="arama_input" placeholder="Ağrınızı veya semptomu yazın (Örn: Kulak Çınlaması, Cilt Kaşıntısı...)" onkeyup="aramaYap()">
+        <input type="text" class="form-control" id="arama_input" placeholder="Ağrınızı veya semptomu yazın (Örn: Diz Ağrısı, Göz Batması, Karın Şişliği...)" onkeyup="aramaYap()">
     </div>
     
     <ul class="list-group mb-4" id="sonuclar_listesi">
@@ -156,7 +182,7 @@
     </div>
 
     <footer class="text-center">
-        ⚠️ YASAL UYARI: Bu bir teşhis aracı DEĞİLDİR. Sadece en yaygın protokol ve sevk zincirini gösterir. Mutlak tanı için hekime başvurunuz.
+        ⚠️ YASAL UYARI: Bu bir teşhis aracı DEĞİLDİR. Sadece Sağlık Bakanlığı protokollerine uygun sevk zincirini gösterir. Mutlak tanı için hekime başvurunuz.
     </footer>
 </div>
 
