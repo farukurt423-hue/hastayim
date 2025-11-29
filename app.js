@@ -1,107 +1,123 @@
-// app.js dosyası - YÜZLERCE HASTALIĞIN BAŞLANGIÇ ÇEKİRDEĞİ
+// app.js dosyası - GENİŞLETİLMİŞ VE DÜZENLENMİŞ VERİ SETİ
 
 const SEMPTOM_VERILERI = [
-    // --- Vücut Ana Çekirdek (Ortak Sorunlar) ---
+    // --- GÖĞÜS ve KARIN ---
     {
-        id: 1,
-        semptom: "Bel Ağrısı",
-        tanisal_bolum: "Ortopedi ve Travmatoloji",
-        tedavi_bolum: "Fizik Tedavi ve Rehabilitasyon (FTR)",
-        acil_durum: ["Yüksek ateş", "Şiddetli travma", "Bacaklarda ani uyuşma", "İdrar kaçırma"],
-        yapilmasi_gereken: "İlk randevunuzu Ortopedi uzmanından alarak röntgen/MR istemelisiniz. Tedavi için FTR'ye sevk, tanı konulduktan sonra yapılır.",
-        aciklama: "Kas-iskelet sistemi, omurga ve eklem sorunları için ilk başvurulacak tanı bölümüdür."
-    },
-    {
-        id: 2,
-        semptom: "Mide Yanması",
+        id: 10,
+        semptom: "Karın Şişliği ve Gaz",
         tanisal_bolum: "Dahiliye (İç Hastalıkları)",
         tedavi_bolum: "Gastroenteroloji",
-        acil_durum: ["Şiddetli göğüs ağrısı", "Siyah dışkı (iç kanama)", "Sürekli kusma"],
-        yapilmasi_gereken: "Öncelikle Dahiliye uzmanına giderek genel bir kontrol ve kan testi talep ediniz. Kronikleşirse sevk istenir.",
-        aciklama: "Sindirim sistemi, mide ve bağırsak sorunları için genel başlangıç noktasıdır."
+        acil_durum: ["Şiddetli, bıçak saplanır gibi ağrı", "Kanlı dışkı", "Yüksek ateş"],
+        yapilmasi_gereken: "Öncelikle Dahiliye uzmanına giderek genel bir kontrol, ultrason ve tahlil isteyiniz. Kronik sindirim sorunları için sevk alınız.",
+        aciklama: "Bağırsak sorunları, hazımsızlık ve genel karın şikayetleri için genel başlangıç noktasıdır."
     },
     {
-        id: 3,
-        semptom: "Baş Ağrısı",
-        tanisal_bolum: "Nöroloji",
-        tedavi_bolum: "Nöroloji",
-        acil_durum: ["Ani ve şiddetli ağrı (hayatınızdaki en kötüsü)", "Bilinç kaybı", "Konuşma bozukluğu"],
-        yapilmasi_gereken: "Migren, gerilim tipi baş ağrısı gibi kronik durumlar Nöroloji'nin alanıdır. İlk defa şiddetli yaşanıyorsa Dahiliye veya Acil'e başvurulabilir.",
-        aciklama: "Sinir sistemi, beyin ve migren gibi kronik baş ağrıları için ana tanı bölümüdür."
+        id: 11,
+        semptom: "Geçmeyen Öksürük",
+        tanisal_bolum: "Göğüs Hastalıkları",
+        tedavi_bolum: "Göğüs Hastalıkları",
+        acil_durum: ["Nefes darlığı", "Kanlı balgam", "Göğüste sıkışma hissi"],
+        yapilmasi_gereken: "Akciğer sağlığı, astım, KOAH ve kronik bronşit araştırması için direkt Göğüs Hastalıkları'na başvurunuz.",
+        aciklama: "Solunum yolları, akciğerler ve alerjik öksürükler bu bölümün alanıdır."
     },
     {
-        id: 4,
-        semptom: "Halsizlik ve Sürekli Yorgunluk",
-        tanisal_bolum: "Dahiliye (İç Hastalıkları)",
-        tedavi_bolum: "Dahiliye / Endokrinoloji",
-        acil_durum: ["Göğüs ağrısı", "Nefes darlığı"],
-        yapilmasi_gereken: "Kan tahlilleri, vitamin eksiklikleri ve organ fonksiyonları için Dahiliye uzmanına başvurunuz. Hormonal sorun şüphesi varsa Endokrinoloji'ye sevk edilir.",
-        aciklama: "Vitamin, kan değerleri, tiroid ve organ fonksiyonlarının kontrolü için genel başlangıç."
+        id: 12,
+        semptom: "Kalp Çarpıntısı",
+        tanisal_bolum: "Kardiyoloji",
+        tedavi_bolum: "Kardiyoloji",
+        acil_durum: ["Göğüste şiddetli ağrı", "Bayılma hissi", "Nefes darlığı ile birlikte çarpıntı"],
+        yapilmasi_gereken: "Kalp ritmi, damarlar ve kapakçıklar için direkt Kardiyoloji'ye başvurunuz. (Acil değilse, Dahiliye'den sevk de alınabilir).",
+        aciklama: "Kalp ve damar sistemi ile ilgili tüm şikayetler için ana uzmanlık."
     },
 
-    // --- Kulak, Burun, Boğaz (KBB) ---
+    // --- BAŞ ve BOYUN ---
     {
-        id: 5,
+        id: 13,
+        semptom: "Boyun Ağrısı ve Tutulma",
+        tanisal_bolum: "Fizik Tedavi ve Rehabilitasyon (FTR)",
+        tedavi_bolum: "FTR / Ortopedi",
+        acil_durum: ["Şiddetli travma", "Kol ve parmaklarda ani uyuşma/güç kaybı"],
+        yapilmasi_gereken: "FTR, kas, eklem ve duruş bozukluğu kaynaklı ağrılar için iyi bir başlangıç noktasıdır. Sinir sıkışması şüphesi varsa (uyuşma) Nöroloji veya Beyin Cerrahisi'ne sevk edilir.",
+        aciklama: "Boyun fıtığı, kas spazmları ve duruş bozuklukları için ilk tanı ve tedavi bölümlerindendir."
+    },
+    {
+        id: 14,
         semptom: "Kulak Çınlaması",
         tanisal_bolum: "Kulak Burun Boğaz (KBB)",
         tedavi_bolum: "KBB",
         acil_durum: ["Ani işitme kaybı", "Şiddetli baş dönmesi (vertigo)"],
-        yapilmasi_gereken: "İşitme testi (odyogram) ve kulak sağlığı için KBB'ye başvurunuz.",
+        yapilmasi_gereken: "İşitme kaybı, kulak enfeksiyonları ve kulakta sıvı birikimi için KBB'ye başvurunuz.",
         aciklama: "Kulak enfeksiyonları, işitme sorunları ve denge bozuklukları için ana uzmanlık."
     },
     {
-        id: 6,
-        semptom: "Geçmeyen Boğaz Ağrısı",
-        tanisal_bolum: "Kulak Burun Boğaz (KBB)",
-        tedavi_bolum: "KBB",
-        acil_durum: ["Nefes almada zorluk", "Yutkunamama"],
-        yapilmasi_gereken: "Bademcik, geniz eti ve kronik farenjit gibi durumlar için KBB uzmanına başvurunuz.",
-        aciklama: "Farenjit, tonsilit ve sinüzit gibi üst solunum yolu sorunları."
-    },
-
-    // --- Göz Hastalıkları ---
-    {
-        id: 7,
-        semptom: "Gözde Kızarıklık ve Kaşıntı",
+        id: 15,
+        semptom: "Gözde Batma ve Kuruluk",
         tanisal_bolum: "Göz Hastalıkları",
         tedavi_bolum: "Göz Hastalıkları",
         acil_durum: ["Ani görme kaybı", "Gözde keskin batma hissi (yabancı cisim)"],
-        yapilmasi_gereken: "Alerjik reaksiyonlar, enfeksiyon veya miyopi/astigmat gibi görme kusurları için direkt Göz Hastalıkları uzmanına randevu alınız.",
-        aciklama: "Göz enfeksiyonları, kuruluk, alerji ve görme bozuklukları."
+        yapilmasi_gereken: "Alerjik reaksiyonlar, kuru göz sendromu ve görme kusurları için direkt Göz Hastalıkları uzmanına randevu alınız.",
+        aciklama: "Göz enfeksiyonları, kuruluk ve görme bozuklukları."
     },
 
-    // --- Cilt ve Ayak Sağlığı (Ayak, Deri, Tırnak) ---
+    // --- EKSTREMİTELER (KOL, DİZ, AYAK) ---
     {
-        id: 8,
-        semptom: "Ciltte Geçmeyen Kaşıntı",
-        tanisal_bolum: "Dermatoloji (Cildiye)",
-        tedavi_bolum: "Dermatoloji",
-        acil_durum: ["Vücudun hızla şişmesi", "Nefes almada zorluk (anafilaksi)"],
-        yapilmasi_gereken: "Egzama, mantar, sivilce veya alerji testi için Cildiye uzmanına başvurunuz.",
-        aciklama: "Deri, saç, tırnak ve cinsel yolla bulaşan hastalıklar bu bölümün alanıdır."
-    },
-    {
-        id: 9,
-        semptom: "Ayak Bileği Burkulması",
+        id: 16,
+        semptom: "Diz Ağrısı",
         tanisal_bolum: "Ortopedi ve Travmatoloji",
         tedavi_bolum: "Ortopedi / FTR",
-        acil_durum: ["Şiddetli şişlik ve üzerine basamama"],
-        yapilmasi_gereken: "Kemik kırığı, bağ ve tendon hasarı şüphesiyle direkt Ortopedi uzmanına başvurulmalıdır.",
-        aciklama: "Travmatik yaralanmalar, kırıklar, çıkıklar ve eklem sorunları Ortopedi'nin tanı alanıdır."
-    }
+        acil_durum: ["Şiddetli şişlik", "Yere basamama", "Dizde şekil bozukluğu"],
+        yapilmasi_gereken: "Menisküs, bağ ve kıkırdak hasarı, kireçlenme gibi tanı için Ortopedi'ye başvurunuz. Tedavi (ameliyatsız) için FTR'ye sevk edilir.",
+        aciklama: "Kas-iskelet sistemi, eklem ve bağ sorunları için tanı uzmanıdır."
+    },
+    {
+        id: 17,
+        semptom: "El Parmaklarında Uyuşma",
+        tanisal_bolum: "Nöroloji",
+        tedavi_bolum: "Nöroloji / FTR",
+        acil_durum: ["Ani felç/güç kaybı", "Konuşma bozukluğu"],
+        yapilmasi_gereken: "Sinir sıkışması (Karpal Tünel), sinir hasarı veya nörolojik hastalıklar için Nöroloji'ye başvurunuz.",
+        aciklama: "Sinir sistemi, beyin ve omurilikten kaynaklanan uyuşmalar için tanı bölümüdür."
+    },
+    {
+        id: 18,
+        semptom: "Ayak Topuğunda Şiddetli Ağrı",
+        tanisal_bolum: "Ortopedi ve Travmatoloji",
+        tedavi_bolum: "Ortopedi / FTR",
+        acil_durum: ["Açık yara", "Travma"],
+        yapilmasi_gereken: "Topuk dikeni, tendon iltihabı gibi durumlar için Ortopedi uzmanına başvurunuz. FTR veya fizik tedavi cihazları ile tedavi planlanır.",
+        aciklama: "Ayak anatomisi, kemik ve tendon sorunları için ana tanı."
+    },
+
+    // --- DERİ ve CİLT ---
+    {
+        id: 19,
+        semptom: "Vücutta Geçmeyen Kaşıntı",
+        tanisal_bolum: "Dermatoloji (Cildiye)",
+        tedavi_bolum: "Dermatoloji",
+        acil_durum: ["Nefes almada zorluk (Anafilaksi)", "Hızla yayılan büyük kabarcıklar"],
+        yapilmasi_gereken: "Egzama, mantar, alerjik reaksiyonlar veya cilt hastalıkları için direkt Cildiye'ye başvurunuz.",
+        aciklama: "Deri, saç, tırnak ve ciltteki döküntülerin tanısı ve tedavisi."
+    },
     
-    // **Siz de bu yapıyı kullanarak yüzlerce semptom ekleyebilirsiniz!**
+    // --- Geri Kalan Temel Semptomlar ---
+    {
+        id: 20,
+        semptom: "Yüksek Ateş (Sebepsiz)",
+        tanisal_bolum: "Dahiliye (İç Hastalıkları)",
+        tedavi_bolum: "Dahiliye",
+        acil_durum: ["Ateşle birlikte bilinç kaybı", "Boyun sertliği (Menenjit şüphesi)"],
+        yapilmasi_gereken: "Enfeksiyon tespiti, kan tahlilleri ve hastalığın kaynağını bulmak için Dahiliye'ye başvurunuz.",
+        aciklama: "Ateşli hastalıkların ve enfeksiyonların ilk inceleme bölümüdür."
+    }
 ];
 
+// --- ANA FONKSİYONLAR (Önceki mantık aynı, sadece stil isimleri güncellendi) ---
 
-// --- ANA FONKSİYONLAR ---
-
-// Ana Arama ve Filtreleme Fonksiyonu (Aramayı Yaptırırken otomatik listeler)
 function aramaYap() {
     const aramaMetni = document.getElementById('arama_input').value.toLowerCase();
     const sonuclarListesi = document.getElementById('sonuclar_listesi');
     sonuclarListesi.innerHTML = ''; 
-    document.getElementById('detay_karti').innerHTML = '<p class="text-center text-secondary mt-5">Lütfen aramak istediğiniz semptomu listeden seçin.</p>';
+    document.getElementById('detay_karti').innerHTML = '<p class="text-center text-secondary mt-5">Sorununuzu yukarıdaki arama kutusuna yazmaya başlayın.</p>';
 
     if (aramaMetni.length < 2) {
         sonuclarListesi.style.display = 'none';
@@ -115,7 +131,7 @@ function aramaYap() {
     sonuclarListesi.style.display = 'block';
 
     if (filtrelenmis.length === 0) {
-        sonuclarListesi.innerHTML = '<li class="list-group-item disabled text-center">Aradığınız semptom bulunamadı. Lütfen farklı kelimeler deneyin.</li>';
+        sonuclarListesi.innerHTML = '<li class="list-group-item disabled text-center">Aradığınız semptom bulunamadı. Lütfen aradığınız semptomu netleştirin.</li>';
         return;
     }
 
@@ -128,19 +144,17 @@ function aramaYap() {
     });
 }
 
-// Detay Kartını Oluşturan Fonksiyon (Tıbbi Protokolü Gösterir)
 function detaylariGoster(id) {
     const veri = SEMPTOM_VERILERI.find(d => d.id === id);
     const detayKarti = document.getElementById('detay_karti');
-    document.getElementById('sonuclar_listesi').style.display = 'none'; // Arama listesini kapat
+    document.getElementById('sonuclar_listesi').style.display = 'none';
 
-    // Acil durumları vurgulama
-    const acilListe = veri.acil_durum.map(item => `<li><span class="text-danger">🚨</span> **${item}**</li>`).join('');
+    // Acil durumları vurgulama (Küçültülmüş ve hoş stil)
+    const acilListe = veri.acil_durum.map(item => `<span>${item}</span>`).join(' • ');
     const acilUyari = veri.acil_durum.length > 0 ? 
         `<div class="acil-uyari">
-            <h4>🚨 ACİL VE KRİTİK UYARI</h4>
-            <p>Eğer aşağıdaki durumlardan **HERHANGİ BİRİ** varsa, vakit kaybetmeyin, 112'yi arayın veya hemen **ACİL SERVİS**'e gidin!</p>
-            <ul>${acilListe}</ul>
+            <span class="icon">⚠️</span>
+            <p><strong>DİKKAT!</strong> Eğer: ${acilListe} durumlarından biri varsa, **HEMEN ACİL SERVİS**'e başvurunuz!</p>
         </div>` : '';
         
     // Kart içeriği
@@ -152,7 +166,7 @@ function detaylariGoster(id) {
             <div class="protokol-asamalari">
                 <div class="asama asama-tani">
                     <h4>1. TANISAL UZMANLIK (Görülecek İlk Bölüm)</h4>
-                    <p class="bolum-adi">➡️ ${veri.tanisal_bolum}</p>
+                    <p class="bolum-adi">${veri.tanisal_bolum}</p>
                     <p class="aciklama-detay"><strong>Açıklama:</strong> ${veri.aciklama}</p>
                 </div>
                 
@@ -160,7 +174,7 @@ function detaylariGoster(id) {
 
                 <div class="asama asama-tedavi">
                     <h4>2. TEDAVİ AŞAMASI (Tanı Sonrası Sevk)</h4>
-                    <p class="bolum-adi">➡️ ${veri.tedavi_bolum}</p>
+                    <p class="bolum-adi">${veri.tedavi_bolum}</p>
                     <p class="aciklama-detay"><strong>Doktor Önerisi:</strong> ${veri.yapilmasi_gereken}</p>
                 </div>
             </div>
