@@ -22,6 +22,7 @@
             --shadow-huzur: 0 10px 30px rgba(0, 0, 0, 0.1); 
             --shadow-lift: 0 5px 15px rgba(0, 0, 0, 0.08); 
             --border-radius-xxl: 32px; /* Ekstra Yumuşak Köşeler */
+            --border-radius-soft: 12px;
         }
 
         body {
@@ -52,7 +53,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* --- GELİŞMİŞ ARAMA KUTUSU VE CONTAINER (HOŞ VE SÜSLÜ) --- */
+        /* --- ARAMA KUTUSU VE CONTAINER --- */
         .search-container {
             position: relative;
             margin-top: -5rem; 
@@ -80,7 +81,6 @@
             font-weight: 500;
         }
         
-        /* Arama İkonu Butonu */
         .input-group-text {
             background: var(--primary-gradient);
             color: white;
@@ -89,45 +89,10 @@
             margin: 0 5px;
             padding: 12px 28px;
             font-size: 1.3rem;
-            transition: opacity 0.3s;
             cursor: pointer;
         }
         
-        .input-group-text:hover {
-            opacity: 0.85;
-        }
-        
-        /* --- SONUÇ LİSTESİ --- */
-        #sonuclar_listesi {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-            max-height: 320px;
-            overflow-y: auto;
-            border-radius: var(--border-radius-xxl);
-            box-shadow: var(--shadow-huzur);
-            position: absolute;
-            width: 100%;
-            z-index: 15;
-            background-color: var(--card-background);
-        }
-
-        #sonuclar_listesi .list-group-item {
-            cursor: pointer;
-            padding: 15px 25px;
-            border: none;
-            border-bottom: 1px solid #e0e0e0;
-            transition: background-color 0.3s, transform 0.2s;
-            font-family: var(--font-body);
-            font-weight: 400;
-        }
-
-        #sonuclar_listesi .list-group-item:hover {
-            background-color: #e8f5e9; /* Çok Açık Yeşil */
-            transform: translateX(5px);
-        }
-        
-        /* --- DETAY KARTI --- */
+        /* --- SONUÇ KARTI --- */
         #detay_karti {
             background-color: var(--card-background);
             border-radius: var(--border-radius-xxl);
@@ -139,42 +104,26 @@
         }
         
         /* Kartın Köşesine Süslü Desen */
-        #detay_karti::before {
-            content: "🌿";
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2.5rem;
-            opacity: 0.4;
-            transform: rotate(10deg);
-        }
-        #detay_karti::after {
-            content: "✨";
-            position: absolute;
-            bottom: 20px;
-            left: 30px;
-            font-size: 1.5rem;
-            opacity: 0.6;
-            transform: rotate(-10deg);
-        }
+        #detay_karti::before { content: "🌿"; position: absolute; top: 20px; right: 30px; font-size: 2.5rem; opacity: 0.4; transform: rotate(10deg); }
+        #detay_karti::after { content: "✨"; position: absolute; bottom: 20px; left: 30px; font-size: 1.5rem; opacity: 0.6; transform: rotate(-10deg); }
 
-        /* Acil Uyarı Alanı (Küçük ve Sakin - Metin Düzeltildi) */
+        /* Acil Uyarı Alanı (SÜPER KOMPAKT VE SAKİN) */
         .acil-uyari-sakin {
-            background-color: #fff3f3; 
-            border-left: 5px solid var(--danger-color);
-            padding: 12px 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
+            background-color: #fff8e1; /* Sarımsı Hafif Arka Plan */
+            border-left: 4px solid var(--danger-color); /* İnce kırmızı çizgi */
+            padding: 10px 15px; /* Daha küçük padding */
+            border-radius: var(--border-radius-soft);
+            margin-bottom: 25px; /* Azaltıldı */
             display: flex;
             align-items: center;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(229, 115, 115, 0.2);
+            font-size: 0.85rem; /* Daha küçük font */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .acil-uyari-sakin .icon {
-            font-size: 1.5rem;
+            font-size: 1.2rem; /* Daha küçük ikon */
             color: var(--danger-color); 
-            margin-right: 12px;
+            margin-right: 10px;
         }
         
         .acil-uyari-sakin strong {
@@ -182,12 +131,12 @@
             font-weight: 600;
         }
         
-        /* Protokol Aşamaları (Soft ve Estetik) */
+        /* Protokol Aşamaları (Kompakt Kutular) */
         .asama {
-            padding: 30px;
+            padding: 25px; /* Azaltıldı */
             border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow-soft);
+            margin-bottom: 20px; /* Azaltıldı */
+            box-shadow: var(--shadow-lift);
             transition: transform 0.3s ease;
         }
         
@@ -196,53 +145,67 @@
              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
         }
 
-        .asama-tani {
-            background-color: #e0f7fa; /* Pastel Turkuaz */
-        }
-        
-        .asama-tedavi {
-            background-color: #fce4ec; /* Pastel Pembe (Sakinleştirici) */
-        }
+        .asama-tani { background-color: #e0f7fa; } /* Pastel Turkuaz */
+        .asama-tedavi { background-color: #fce4ec; } /* Pastel Pembe */
         
         .asama h4 {
             font-family: var(--font-header);
             font-weight: 700;
             color: var(--text-dark);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem; /* Hafif küçültüldü */
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
         }
         
         .icon-vurgu {
-            font-size: 1.6rem;
-            margin-right: 15px;
+            font-size: 1.5rem; 
+            margin-right: 12px;
             color: var(--accent-color);
         }
-        .asama-tedavi .icon-vurgu {
-            color: #d81b60; /* Koyu Pembe/Gül Rengi */
-        }
+        .asama-tedavi .icon-vurgu { color: #d81b60; }
 
         .bolum-adi {
-            font-size: 2.5rem;
+            font-size: 2.2rem; /* Hafif küçültüldü */
             font-weight: 800;
             color: var(--accent-color); 
-            margin-top: 10px;
+            margin-top: 5px;
             display: block;
             font-family: var(--font-header);
         }
         
-        .asama-tani .bolum-adi {
-             color: #00838f; /* Tanı için Koyu Turkuaz */
-        }
+        .asama-tani .bolum-adi { color: #00838f; }
 
         .aciklama-detay {
-            font-size: 1rem;
+            font-size: 0.95rem; /* Hafif küçültüldü */
             color: #555;
-            margin-top: 20px;
-            line-height: 1.6;
+            margin-top: 15px;
+            line-height: 1.5;
             border-top: 1px dashed #dcdcdc;
             padding-top: 15px;
+        }
+        
+        /* YENİ HAZIRLIK NOTU STİLİ (Kompakt ve Vurgulu) */
+        .hazirlik-notu-kutusu {
+            background-color: #fff9c4; /* Çok açık sarı/altın */
+            border-radius: var(--border-radius-soft);
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(255, 179, 0, 0.1);
+            border: 1px solid #ffcc80;
+        }
+
+        .hazirlik-notu-kutusu h4 {
+            color: #f9a825; /* Koyu Altın */
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hazirlik-notu-kutusu p {
+            font-size: 0.95rem;
+            color: #616161;
+            margin-bottom: 0;
+            line-height: 1.4;
         }
         
         /* Placeholder ve Footer Metin Düzeltmeleri */
@@ -351,6 +314,13 @@
                         <strong>ACİL UYARI:</strong> Eğer **${acilListe}** durumlarından biri varsa **HİÇ VAKİT KAYBETMEDEN 112'Yİ ARAYIN**!
                     </div>
                 </div>` : '';
+            
+            // Hazırlık Notu Kutusu (app.js'ten gelen veri burada HTML olarak işlenir)
+            const hazirlikNotuKutusu = veri.hazirlik_notu ? 
+                `<div class="hazirlik-notu-kutusu">
+                    <h4><i class="fas fa-clipboard-list me-2" style="color:#f9a825;"></i>Muayene Öncesi Hazırlık Notu</h4>
+                    <p>${veri.hazirlik_notu}</p>
+                </div>` : '';
                 
             detayKarti.innerHTML = `
                 <h3 class="card-title text-center mb-5" style="color: var(--text-dark); font-family: var(--font-header); font-weight: 700;">
@@ -380,7 +350,8 @@
                         </div>
                     </div>
                 </div>
-            `;
+                
+                ${hazirlikNotuKutusu} `;
             document.getElementById('arama_input').value = veri.semptom;
             document.getElementById('detay_karti').scrollIntoView({ behavior: 'smooth' });
         }
